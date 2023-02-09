@@ -1,12 +1,17 @@
-# Project Name
-Qdrant vector database on Azure
+# Qdrant Vector Database on Azure Cloud
+Qdrant vector database on Azure using:
+
+- *** Azure Container Instance ***
+- *** Azure Kubernetes Service ***
+- *** Qdrant container in DockerHub ***
+- *** Helm (custom chart w/qdrant helm dependency) ***
 
 ## Project Information
 ---
 description: This project provides resources to deploy the Qdrant Vector database to Azure using Azure Container Instances and/or Azure Kubernetes Service via ARM template, bicep, or Helm Chart.
 page_type: sample
 
-products:
+Products:
 - azure
 - azure-resource-manager
 - azure-container-instance
@@ -35,11 +40,7 @@ This project framework provides the following features:
 
 ### Prerequisites
 
-(ideally very short, if any)
-
-- OS
-- Library version
-- ...
+To get started, users will need access to an Azure subscription.
 
 ### Installation
 

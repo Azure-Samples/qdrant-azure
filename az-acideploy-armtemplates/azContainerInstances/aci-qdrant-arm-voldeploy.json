@@ -9,7 +9,7 @@
         },
         "defaultValue": "az-qdrant-group"
       },
-      "containername1": {
+      "containername": {
         "type": "string",
         "metadata": {
           "description": "Name for the container 1"
@@ -68,7 +68,7 @@
         "properties": {
           "containers": [
             {
-              "name": "[parameters('containername1')]",
+              "name": "[parameters('containername')]",
               "properties": {
                 "image": "[parameters('image')]",
                 "ports": [
