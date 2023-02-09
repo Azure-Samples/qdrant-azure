@@ -16,12 +16,6 @@
         },
         "defaultValue": "az-qdrant-1"
       },
-      "containername2": {
-        "type": "string",
-        "metadata": {
-          "description": "az-qdrant-2"
-        }
-      },
       "volumename": {
         "type": "string",
         "metadata": {
@@ -76,7 +70,7 @@
             {
               "name": "[parameters('containername1')]",
               "properties": {
-                "image": "nginx",
+                "image": "[parameters('image')]",
                 "ports": [
                   {
                     "port": "[parameters('port')]"
@@ -91,32 +85,8 @@
                 "volumeMounts": [
                   {
                     "name": "[parameters('volumename')]",
-                    "mountPath": "/var/log/qdrantvol",
+                    "mountPath": "/mnt/input/qdrant_data",
                     "readOnly": false
-                  }
-                ]
-              }
-            },
-            {
-              "name": "[parameters('containername2')]",
-              "properties": {
-                "command": [
-                  "bin/bash",
-                  "-c",
-                  "while sleep 5; do cat /mnt/input/access.log; done"
-                ],
-                "image": "[parameters('image')]",
-                "resources": {
-                  "requests": {
-                    "cpu": "[parameters('cpuCores')]",
-                    "memoryInGb": "[parameters('memoryInGb')]"
-                  }
-                },
-                "volumeMounts": [
-                  {
-                    "name": "[parameters('volumename')]",
-                    "mountPath": "/mnt/input",
-                    "readOnly": true
                   }
                 ]
               }
