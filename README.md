@@ -1,14 +1,18 @@
 # Project Name
+Qdrant vector database on Azure
+
+## Project Information
 ---
 description: This project provides resources to deploy the Qdrant Vector database to Azure using Azure Container Instances and/or Azure Kubernetes Service via ARM template, bicep, or Helm Chart.
 page_type: sample
+
 products:
 - azure
 - azure-resource-manager
 - azure-container-instance
 - azure-kubernetes-service
 - qdrant vector database (oss)
-urlFragment: aci-qdrant-volume
+
 languages:
 - json
 - yaml
@@ -23,8 +27,8 @@ languages:
 
 This project framework provides the following features:
 
-* Ability to deploy the Qdrant vector database for use in storing embeddings via ACI
-* Feature 2
+* Ability to deploy the Qdrant vector database for use in storing embeddings via Azure Container Instance
+* Ability to deploy persistent volume with ACI to store/persist Qdrant data
 * ...
 
 ## Getting Started
