@@ -68,12 +68,21 @@
                         "name": "[parameters('containerName')]",
                         "properties": {
                             "image": "[parameters('imageName')]",
-                            "resources": {
-                                "requests": {
+                            "resources": 
+                            {
+                                "requests": 
+                                {
                                     "cpu": "[int(parameters('numberCpuCores'))]",
                                     "memoryInGB": "[float(parameters('memory'))]"
                                 }
                             },
+                            "volumeMounts": [
+                                {
+                                    "name": "[parameters('volumeName')]",
+                                    "mountPath": "/mnt/input/qdrant_data",
+                                    "readOnly": false
+                                }
+                            ],
                             "ports": "[parameters('ports')]"
                         }
                     }

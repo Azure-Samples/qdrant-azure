@@ -17,6 +17,9 @@
         "imageName": {
             "value": "qdrant/qdrant"
         },
+        "volumeName": {
+            "value": "azqdrantvolume"
+        },
         "osType": {
             "value": "Linux"
         },
