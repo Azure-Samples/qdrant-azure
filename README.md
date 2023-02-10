@@ -26,7 +26,7 @@ languages:
 
 # Qdrant Vector DB with Volume on Azure 
 
-[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azu re-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/Azure-Samples/qdrant-azure/dev-aci/az-acideploy-armtemplates/azContainerInstances/aci-qdrant-arm-voldeploy.json)
+[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/Azure-Samples/qdrant-azure/dev-aci/az-acideploy-armtemplates/azContainerInstances/aci-qdrant-arm-voldeploy.json)
 
 ## Features
 This project framework provides the following features:
