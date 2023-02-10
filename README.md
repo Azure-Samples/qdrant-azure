@@ -1,10 +1,10 @@
 # Qdrant Vector Database on Azure Cloud
 Qdrant vector database on Azure using:
 
-- *** Azure Container Instance ***
-- *** Azure Kubernetes Service ***
-- *** Qdrant container in DockerHub ***
-- *** Helm (custom chart w/qdrant helm dependency) ***
+- **Azure Container Instance**
+- **Azure Kubernetes Service**
+- **Qdrant container in DockerHub**
+- **Helm (custom chart w/qdrant helm dependency)**
 
 ## Project Information
 ---
@@ -29,7 +29,6 @@ languages:
 [![Deploy To Azure](https://raw.githubusercontent.com/Azure/azu re-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/Azure-Samples/qdrant-azure/dev-aci/az-acideploy-armtemplates/azContainerInstances/aci-qdrant-arm-voldeploy.json)
 
 ## Features
-
 This project framework provides the following features:
 
 * Ability to deploy the Qdrant vector database using via Azure Container Instance for use in storing AI generated embeddings 
@@ -44,10 +43,13 @@ To get started, users will need access to an Azure subscription.
 
 ### Installation
 
-(ideally very short)
+**Azure Container Instances**
 
-- npm install [package name]
-- mvn install
+**Azure Kubernetes Service**
+
+**Docker (Local)**
+
+**Kubernetes (Local)**
 - ...
 
 ### Quickstart
