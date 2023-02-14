@@ -12,9 +12,9 @@
       "containername": {
         "type": "string",
         "metadata": {
-          "description": "Name for the container 1"
+          "description": "Name for the container"
         },
-        "defaultValue": "az-qdrant-1"
+        "defaultValue": "az-qdrant"
       },
       "volumename": {
         "type": "string",
@@ -42,7 +42,7 @@
         "metadata": {
           "description": "The number of CPU cores to allocate to the container."
         },
-        "defaultValue": "2.0"
+        "defaultValue": "2"
       },
       "memoryInGb": {
         "type": "string",
@@ -76,7 +76,8 @@
                     "port": "[parameters('port')]"
                   }
                 ],
-                "resources": {
+                "resources": 
+                {
                   "requests": {
                     "cpu": "[parameters('cpuCores')]",
                     "memoryInGb": "[parameters('memoryInGb')]"
