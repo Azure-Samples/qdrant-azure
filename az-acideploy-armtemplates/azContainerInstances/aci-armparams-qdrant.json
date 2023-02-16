@@ -3,7 +3,7 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
       "containergroupname": {
-        "value": "az-qdrant-group"
+        "value": ""
       },
       "containername": {
         "value": "az-qdrant"
