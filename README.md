@@ -3,7 +3,6 @@
 ![Qdrant](./img/Qdrant.png)     ![Azure](./img/Azure.png)
 
 Run the Qdrant vector engine (vector database) on Azure using:
-
 - **Azure Container Instance**
 - **Azure Kubernetes Service**
 - **Qdrant container in DockerHub**
