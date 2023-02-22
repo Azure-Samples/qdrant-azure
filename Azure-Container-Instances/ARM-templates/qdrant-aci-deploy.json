@@ -1,0 +1,73 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "variables": {},
+    "resources": [
+        {
+            "name": "[parameters('containergroupname')]",
+            "type": "Microsoft.ContainerInstance/containerGroups",
+            "apiVersion": "2022-10-01-preview",
+            "location":"[resourceGroup().location]",
+            "properties": {
+                "sku": "Standard",
+                "containers": [
+                    {
+                        "name": "[parameters('containername')]",
+                        "properties":{
+                            "image": "qdrant/qdrant",
+                            "ports": [
+                                {
+                                    "protocol": "TCP",
+                                    "port": 80
+                                },
+                                {
+                                    "protocol": "TCP",
+                                    "port": 6333
+                                }
+                            ],
+                            "environmentVariables": [],
+                            "resources": {
+                                "requests": {
+                                    "memoryInGB": 16,
+                                    "cpu": 4
+                                }
+                            }, 
+                            "volumeMounts": [
+                                {
+                                    "name": "[parameters('volumename')]",
+                                    "mountPath": "/aci/qdrant"
+                                }
+                            ]
+
+                        }
+                    }
+                ],    
+                "osType": "Linux",
+                "ipAddress": {
+                "type": "Public",
+                "ports": [
+                    {
+                        "protocol": "Tcp",
+                        "port": 6333
+                    },
+                    {
+                        "protocol": "Tcp",
+                        "port": 80
+                    }
+                ],
+                "dnsNameLabel": "qdrant-aci-dns"
+                },
+                "volumes": [
+                    {
+                        "name": "filesharevolume",
+                        "azureFile": {
+                            "shareName": "[parameters('storagesharename')]",
+                            "storageAccountName": "[parameters('storageaccountname')]",
+                            "storageAccountKey": "[parameters('storageaccountkey')]"
+                        }
+                }
+          ]
+            }   
+        }
+    ]
+}
