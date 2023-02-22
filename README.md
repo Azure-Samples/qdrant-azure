@@ -1,10 +1,12 @@
 # Qdrant Vector Database on Azure Cloud
-Qdrant vector database on Azure using:
 
+
+![Qdrant](./img/Qdrant.png)     ![Azure](./img/Azure.png)
+
+Run the Qdrant vector engine (vector database) on Azure using:
 - **Azure Container Instance**
 - **Azure Kubernetes Service**
 - **Qdrant container in DockerHub**
-- **Helm (custom chart w/qdrant helm dependency)**
 
 ## Project Information
 ---
@@ -17,6 +19,7 @@ Products:
 - azure-container-instance
 - azure-kubernetes-service
 - qdrant vector database (oss)
+- docker
 
 languages:
 - json
@@ -26,14 +29,15 @@ languages:
 
 # Qdrant Vector DB with Volume on Azure 
 
-[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azu re-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https://raw.githubusercontent.com/Azure-Samples/qdrant-azure/dev-aci/az-acideploy-armtemplates/azContainerInstances/aci-qdrant-arm-voldeploy.json)
+[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-aci%2Faz-acideploy-armtemplates%2FazContainerInstances%2Faci-qdrant-arm-voldeploy.json)
 
 ## Features
 This project framework provides the following features:
 
 * Ability to deploy the Qdrant vector database using via Azure Container Instance for use in storing AI generated embeddings 
 * Ability to deploy persistent volume with ACI to store/persist Qdrant data
-* ...
+* Ability to run a scalable Qdrant cluster on Kubernetes with AKS. 
+* Ability to run Qdrant on local desktop wiht Docker. 
 
 ## Getting Started
 
@@ -45,19 +49,23 @@ To get started, users will need access to an Azure subscription.
 
 **Azure Container Instances**
 
+To deploy Qdrant to an Azure Container Instance with Azure Volume, go to the `Azure-Container-Instances` folder and follow instructions in the `README.md` to deploy to the Azure Container Instances (ACI) service.
+
+Additionally, you can deploy using the button below. (Please ensure that you already have storage set up in Azure)
+
+[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-aci%2Faz-acideploy-armtemplates%2FazContainerInstances%2Faci-qdrant-arm-voldeploy.json)
+
 **Azure Kubernetes Service**
+
+To deploy Qdrant to a cluster running in Azure Kubernetes Services, go to the `Azure-Kubernetes-Svc` folder and follow instructions in the `README.md` to deploy to a Kubernetes cluster with Load Balancer on Azure Kubernetes Services (AKS).
 
 **Docker (Local)**
 
-**Kubernetes (Local)**
-- ...
+To deploy Qdrant to a cluster running in Azure Kubernetes Service, go to the `Azure-Kubernetes-Svc` folder and follow instructions in the `README.md` to deploy to a Kubernetes cluster with Load Balancer on Azure Kubernetes Services (AKS).
 
-### Quickstart
+## Resources
 
-
-1. Click on Deploy to Azure button above to quickly deploy to your subscription with an Azure Container Instance
-
-
-## Deployment
-
-These templates demonstrates a simple way to deploy the Qdrant vector database with a volume for [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/).
+- Qdrant Vector Search (Vector Database): https://qdrant.tech/
+- Azure Container Instances (ACI): https://learn.microsoft.com/en-us/azure/container-instances/
+- Azure Kubernetes Service (AKS): https://learn.microsoft.com/en-us/azure/aks/
+- Docker Desktop: https://docs.docker.com/desktop/ 
