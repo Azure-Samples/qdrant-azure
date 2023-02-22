@@ -1,5 +1,6 @@
 # Qdrant Vector Database on Azure Cloud
 
+
 ![Qdrant](./img/Qdrant.png)     ![Azure](./img/Azure.png)
 
 Run the Qdrant vector engine (vector database) on Azure using:
@@ -62,10 +63,7 @@ To deploy Qdrant to a cluster running in Azure Kubernetes Services, go to the `A
 
 To deploy Qdrant to a cluster running in Azure Kubernetes Service, go to the `Azure-Kubernetes-Svc` folder and follow instructions in the `README.md` to deploy to a Kubernetes cluster with Load Balancer on Azure Kubernetes Services (AKS).
 
-
 ## Resources
-
-(Any additional resources or related projects)
 
 - Qdrant Vector Search (Vector Database): https://qdrant.tech/
 - Azure Container Instances (ACI): https://learn.microsoft.com/en-us/azure/container-instances/
