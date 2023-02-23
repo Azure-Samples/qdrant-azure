@@ -37,7 +37,7 @@ This project framework provides the following features:
 * Ability to deploy the Qdrant vector database using via Azure Container Instance for use in storing AI generated embeddings 
 * Ability to deploy persistent volume with ACI to store/persist Qdrant data
 * Ability to run a scalable Qdrant cluster on Kubernetes with AKS. 
-* Ability to run Qdrant on local desktop wiht Docker. 
+* Ability to run Qdrant on local desktop with Docker. 
 
 ## Getting Started
 
@@ -51,7 +51,9 @@ To get started, users will need access to an Azure subscription.
 
 To deploy Qdrant to an Azure Container Instance with Azure Volume, go to the `Azure-Container-Instances` folder and follow instructions in the `README.md` to deploy to the Azure Container Instances (ACI) service.
 
-Additionally, you can deploy using the button below. (Please ensure that you already have storage set up in Azure)
+Additionally, you can deploy using the **Deploy to Azure button** below. (Please ensure that you already have storage set up in Azure) 
+
+If using the **Deploy to Azure button**, you will need to have a storage account set up in Azure previously. Update the`storageaccountname` parameter in the `qdrant-deploy-aci.parameters.json` file in the `Azure-Container-Instances` directory with your existing storage account name.
 
 [![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-aci%2Faz-acideploy-armtemplates%2FazContainerInstances%2Faci-qdrant-arm-voldeploy.json)
 
