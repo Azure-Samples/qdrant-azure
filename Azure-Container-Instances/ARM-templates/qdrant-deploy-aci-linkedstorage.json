@@ -1,8 +1,29 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "variables": {},
+    "variables": {
+        "storageAccountName": "[concat(parameters('storageaccountname'), uniqueString(resourceGroup().id))]"
+    },
     "resources": [
+        {
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-04-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "relativePath": "linkedStorageAccount.json"
+                },
+            "   parameters": {
+                    "storageAccountName": {
+                        "value": "[variables('storageAccountName')]"
+                    },
+                    "location": {
+                        "value": "[parameters('location')]"
+                    }
+                }
+            }
+        },
         {
             "name": "[parameters('containergroupname')]",
             "type": "Microsoft.ContainerInstance/containerGroups",
@@ -47,11 +68,11 @@
                 "type": "Public",
                 "ports": [
                     {
-                        "protocol": "TCP",
+                        "protocol": "Tcp",
                         "port": 6333
                     },
                     {
-                        "protocol": "TCP",
+                        "protocol": "Tcp",
                         "port": 80
                     }
                 ],
@@ -62,11 +83,11 @@
                         "name": "filesharevolume",
                         "azureFile": {
                             "shareName": "[parameters('storagesharename')]",
-                            "storageAccountName": "[parameters('storageaccountname')]",
+                            "storageAccountName": "[parameters('storageAccountName')]",
                             "storageAccountKey": "[parameters('storageaccountkey')]"
                         }
-                }
-          ]
+                    }
+                 ]
             }   
         }
     ]
