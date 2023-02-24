@@ -1,4 +1,4 @@
-# Use postgres/example user/password credentials
+# Deploy Qdrant locally with Docker on MacOS
 version: '3.1'
 
 services:
