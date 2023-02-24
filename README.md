@@ -10,7 +10,7 @@ Run the Qdrant vector engine (vector database) on Azure using:
 
 ## Project Information
 ---
-description: This project provides resources to deploy the Qdrant Vector database to Azure using Azure Container Instances and/or Azure Kubernetes Service via ARM template, bicep, or Helm Chart.
+Description: This project provides resources to deploy the Qdrant Vector database to Azure using Azure Container Instances and/or Azure Kubernetes Service via ARM template, bicep, or Helm Chart.
 page_type: sample
 
 Products:
