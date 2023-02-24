@@ -27,20 +27,18 @@ languages:
 
 Install the following software on your machine:
 - Install the [Docker engine](https://docs.docker.com/engine/install). 
-Note: Docker is used to run [Qdrant](https://qdrant.tech) vector search engine. To persist data, you will need to configure an persistent volume or database to store your data.
+Note: Docker is used to run [Qdrant](https://qdrant.tech) vector search engine. 
 
 
 ## Start Docker engine
 
 Ensure that the Docker engine service is running on your computer. Docker can be configured to run automatically when your computer starts. This is the recommended setup.  
 
-![Docker auto start](./img/docker-autostart.png)
+![Docker auto start](../img/docker-autostart.png)
 
 ## Configure Docker
 
-There are 2 components to prepare:
-
-- Qdrant Docker services
+To configure docker services for Qdrant Docker, please follow the instructions below.
 
 ### Step 1: Locate and rename yaml file for Operating System
 In this folder `Local-Docker-Deployment` you will find `docker-compose` yaml files for Windows and Mac operating systems. Select the file that is appropriate for your operating system, and create a copy of it. Rename the copied yaml file `docker-compose.yaml`
@@ -52,15 +50,7 @@ In this folder `Local-Docker-Deployment` you will find `docker-compose` yaml fil
 Open the newly renamed file, `docker-compose.yaml`, with the text editor of your choice.
 
 Adjust the volumes to point to your data directory (see previous note about My Data).
-For instance, if you want to store your data in `D:\QdrantDocker\MyData`, replace
-
-    - d:\workspace\mydata:/var/lib/postgresql/data
-
-with
-
-    - D:\QdrantDocker\MyData:/var/lib/postgresql/data
-
-and replace
+For instance, if you want to store your data  in `D:\QdrantDocker\MyData`, replace
 
     - d:\workspace\mydata\qdrant:/qdrant/storage
 
