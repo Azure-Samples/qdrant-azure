@@ -42,13 +42,10 @@ If using the **Deploy to Azure button**, you will need to have a storage account
 
 **Azure Container Instances**
 
-![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-aci-deploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-aci-deploy.json)
 
 
 - ...
-
-
-
 
 
 ## Deployment
@@ -59,16 +56,18 @@ Option 1: Click on Deploy to Azure button above to quickly deploy to your subscr
 
 Option 2: You can also deploy using the Azure CLI or Azure PowerShell. There ae two options for deployment. 
 
-- 1. Deploy the Azure Container Instance with an existing storage account volume using the ARM template `qdrant-aci-deploy.json` located in this directory. Pass in the name of your existing storage account in the `storageaccountname` parameter in command line for Azure CLI or Azure Powershell.
+1. Deploy the Azure Container Instance with an existing storage account volume using the ARM template `qdrant-aci-deploy.json` located in this directory. Pass in the name of your existing storage account in the `storageaccountname` parameter in command line for Azure CLI or Azure Powershell.
 
-- 2 Deploy the Azure Container Instance with a new storage account volume using the ARM template `qdrant-deploy-aci-linkedstorage.json` and the located in this directory. Pass in the name of your existing storage account in the `storageaccountname` parameter in command line for Azure CLI or Azure Powershell.
+2. Deploy the Azure Container Instance with a new storage account volume using the ARM template `qdrant-deploy-aci-linkedstorage.json` and the located in this directory. Pass in the name of your existing storage account in the `storageaccountname` parameter in command line for Azure CLI or Azure Powershell.
 
 To deploy using the Azure CLI, open the command line and run the following command:: 
-    az deployment group create \
+  az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
   --template-uri<Insert-the Github raw link for template you wish to run> \
-  --parameters storageAccountType=Standard_GRS **If passing in storage name, change parameter here**
+  --parameters storageaccountname=<insert name here> 
+  
+  **If passing in storage name, change parameter here**
 
   Example: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
 
