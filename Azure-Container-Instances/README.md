@@ -77,12 +77,12 @@ To deploy using the Azure Powershell, open the Powershell command line and run t
   -ResourceGroupName ExampleGroup `
   -TemplateUri <Insert-the Github raw link for template you wish to run> 
   
-  Example: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
+  Example of format of raw Github link: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
 
 ## Resources
 
-(Any additional resources or related projects)
+For more information in Deploying ARM templates please review: 
 
-- Link to supporting information
-- Link to similar sample
+- [!Deploy resources with ARM templates and Azure PowerShell](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-powershell)
+- [!How to use Azure Resource Manager (ARM) deployment templates with Azure CLI](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-cli)
 - ...

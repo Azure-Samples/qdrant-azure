@@ -10,7 +10,6 @@ page_type: sample
 
 Products:
 - docker
-- postgresql
 - qdrant vector database (oss)
 
 languages:
@@ -22,17 +21,14 @@ languages:
 
 ## Software dependencies
 - **Docker engine**
-- **PostgreSQL database**
 - **Qdrant vector search engine** 
 
 ## Installation
 
 Install the following software on your machine:
 - Install the [Docker engine](https://docs.docker.com/engine/install). 
-Note: Docker is used to run [PostgreSQL](https://www.postgresql.org) DB and [Qdrant](https://qdrant.tech) vector search engine.
+Note: Docker is used to run [Qdrant](https://qdrant.tech) vector search engine. To persist data, you will need to configure an persistent volume or database to store your data.
 
-- Install the [PostgreSQL](https://www.postgresql.org) Database.
-Note: When you install PostgreSQL on Windows, it will automatically launch the service. You'll need to stop the service so that the port is not in use when running the docker container in the steps below. To prevent the service from restarting on reboot, you may want to disable the service.
 
 ## Start Docker engine
 
@@ -40,12 +36,11 @@ Ensure that the Docker engine service is running on your computer. Docker can be
 
 ![Docker auto start](./img/docker-autostart.png)
 
-## Configure Docker and PostgreSQL services
+## Configure Docker
 
 There are 2 components to prepare:
 
 - Qdrant Docker services
-- PostgreSQL
 
 ### Step 1: Locate and rename yaml file for Operating System
 In this folder `Local-Docker-Deployment` you will find `docker-compose` yaml files for Windows and Mac operating systems. Select the file that is appropriate for your operating system, and create a copy of it. Rename the copied yaml file `docker-compose.yaml`
