@@ -38,7 +38,7 @@ To get started, users will need access to an Azure subscription.
 
 If using the **Deploy to Azure button**, you will need a storage account set up in Azure. When you select the Deploy to Azure button, the template will create a storage account for you. 
 
-If you wish to use an existing storage account, please update the`storageaccountname` parameter in the [!`qdrant-deploy-aci.parameters.json`](./ARM-templates/qdrant-deploy-aci.parameters.json) file in this directory and run the `qdrant-deploy-aci.json` ARM template in the [!`ARM-templates`](./ARM-templates) directory by following the Deployment steps below.
+If you wish to use an existing storage account, please update the`storageaccountname` parameter in the [`qdrant-deploy-aci.parameters.json`](./ARM-templates/qdrant-deploy-aci.parameters.json) file in this directory and run the `qdrant-deploy-aci.json` ARM template in the [`ARM-templates`](./ARM-templates) directory by following the Deployment steps below.
 
 ### Installation
 
@@ -58,7 +58,7 @@ Option 2: You can also deploy using the Azure CLI.
 
 Deploy the Azure Container Instance with an existing storage account volume using the ARM template `qdrant-aci-deploy.json` located in this directory. Pass the name of the existing storage account in the `storageaccountname` parameter in command line for Azure CLI or Azure Powershell.
 
-Deploy the Azure Container Instance with a new storage account volume created using the ARM template `qdrant-deploy-aci-linkedstorage.json` located in the [!`ARM-templates`](./ARM-templates) directory.
+Deploy the Azure Container Instance with a new storage account volume created using the ARM template `qdrant-deploy-aci-linkedstorage.json` located in the [`ARM-templates`](./ARM-templates) directory.
 
 To deploy using the Azure CLI, open the command line and run the following command: 
   az deployment group create \
@@ -75,7 +75,7 @@ Option 3: You can also deploy using the Azure Powershell.
 
 Deploy the Azure Container Instance with an existing storage account volume using the ARM template `qdrant-aci-deploy.json` located in this directory. Pas the name of your existing storage account in the `storageaccountname` parameter in command line for Azure Powershell. 
 
-Deploy the Azure Container Instance with a new storage account volume using the ARM template `qdrant-deploy-aci-linkedstorage.json` located in the [!`ARM-templates`](./ARM-templates) directory.
+Deploy the Azure Container Instance with a new storage account volume using the ARM template `qdrant-deploy-aci-linkedstorage.json` located in the [`ARM-templates`](./ARM-templates) directory.
 
 
 To deploy using the Azure Powershell, open the Powershell command line and run the following command: 
@@ -93,6 +93,6 @@ To deploy using the Azure Powershell, open the Powershell command line and run t
 
 For more information in Deploying ARM templates please review: 
 
-- [!Deploy resources with ARM templates and Azure PowerShell](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-powershell)
-- [!How to use Azure Resource Manager (ARM) deployment templates with Azure CLI](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-cli)
+- [Deploy resources with ARM templates and Azure PowerShell](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-powershell)
+- [How to use Azure Resource Manager (ARM) deployment templates with Azure CLI](https://learn.microsoft.com/en-us/azure/azure-resource-manager/templates/deploy-cli)
 - ...

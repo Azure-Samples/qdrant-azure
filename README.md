@@ -1,7 +1,7 @@
 # Qdrant Vector Database on Azure Cloud
 
 
-![Qdrant](./img/Qdrant.png) ![Azure](./img/Azure.png)
+[Qdrant](./img/Qdrant.png) ![Azure](./img/Azure.png)
 
 Run the Qdrant vector engine (vector database) on Azure using:
 - **Azure Container Instance**
@@ -29,8 +29,6 @@ languages:
 
 # Qdrant Vector DB with Volume on Azure 
 
-[![Deploy To Azure](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/1-CONTRIBUTION-GUIDE/images/deploytoazure.svg?sanitize=true)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-aci%2Faz-acideploy-armtemplates%2FazContainerInstances%2Faci-qdrant-arm-voldeploy.json)
-
 ## Features
 This project framework provides the following features:
 
@@ -55,7 +53,7 @@ Additionally, you can deploy using the **Deploy to Azure button** below. (Please
 
 If using the **Deploy to Azure button**, you will need to have a storage account set up in Azure previously. Update the`storageaccountname` parameter in the `qdrant-deploy-aci.parameters.json` file in the `Azure-Container-Instances` directory with your existing storage account name.
 
-[![Deploy To Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-aci%2Faz-acideploy-armtemplates%2FazContainerInstances%2Faci-qdrant-arm-voldeploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-azure-multideploy%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-linkedstorage.json)
 
 **Azure Kubernetes Service**
 

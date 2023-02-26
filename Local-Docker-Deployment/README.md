@@ -27,14 +27,14 @@ languages:
 
 Install the following software on your machine:
 - Install the [Docker engine](https://docs.docker.com/engine/install). 
-Note: Docker is used to run [Qdrant](https://qdrant.tech) vector search engine. 
+Note: Docker is used to run [Qdrant](https://qdrant.tech) vector search engine. To persist data, you will need to configure storage (volume) or store your data. You can read more about this in the [Docker Storage documentation](https://docs.docker.com/storage/).
 
 
 ## Start Docker engine
 
 Ensure that the Docker engine service is running on your computer. Docker can be configured to run automatically when your computer starts. This is the recommended setup.  
 
-![Docker auto start](../img/docker-autostart.png)
+[Docker auto start](../img/docker-autostart.png)
 
 ## Configure Docker
 
@@ -72,4 +72,4 @@ Go to folder where you cloned the repo. Open a terminal and run the following co
     cd Local-Docker-Deployment
     start.sh
 
-![Docker start](./img/docker-start.png)
+[Docker start](./img/docker-start.png)
