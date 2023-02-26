@@ -8,6 +8,15 @@
           "description": "Specify the storage account name."
         }
       },
+      "fileShareName": {
+        "type": "string",
+        "defaultValue": "aciqdrantshare",
+        "maxLength": 63,
+        "minLength": 3,
+        "metadata": {
+        "description": "Specifies the name of the File Share. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only."
+        }
+      },
       "location": {
         "type": "string",
         "metadata": {
@@ -35,7 +44,7 @@
     "resources": [
       {
         "type": "Microsoft.Storage/storageAccounts",
-        "apiVersion": "2021-04-01",
+        "apiVersion": "2021-09-01",
         "name": "[parameters('storageAccountName')]",
         "location": "[parameters('location')]",
         "sku": {
@@ -45,12 +54,24 @@
         "properties": {
           "supportsHttpsTrafficOnly": true
         }
-      }
+      },
+      {
+      "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+      "apiVersion": "2021-09-01",
+      "name": "[format('{0}/default/{1}', parameters('storageAccountName'), parameters('fileShareName'))]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+      ]
+    }
     ],
     "outputs": {
       "storageEndpoint": {
         "type": "object",
         "value": "[reference(parameters('storageAccountName')).primaryEndpoints]"
+      },
+      "listKeysOutput": {
+        "type": "string",
+        "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value]"
       }
     }
   }

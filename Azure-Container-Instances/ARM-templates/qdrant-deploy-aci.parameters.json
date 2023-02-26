@@ -45,7 +45,7 @@
             "value": "mykey"
         },
         "storagesharename": {
-            "value": "mykey"
+            "value": "aciqdrantshare"
         },
         "ports": {
             "value": [

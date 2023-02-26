@@ -1,31 +1,16 @@
 # Qdrant Vector Database on Azure Cloud
 
 
-[Qdrant](./img/Qdrant.png) ![Azure](./img/Azure.png)
+[Qdrant](./img/Qdrant.png) [Azure](./img/Azure.png)
 
 Run the Qdrant vector engine (vector database) on Azure using:
 - **Azure Container Instance**
 - **Azure Kubernetes Service**
-- **Qdrant container in DockerHub**
+- **Qdrant container in Docker**
 
 ## Project Information
 ---
 Description: This project provides resources to deploy the Qdrant Vector database to Azure using Azure Container Instances and/or Azure Kubernetes Service via ARM template, bicep, or Helm Chart.
-page_type: sample
-
-Products:
-- azure
-- azure-resource-manager
-- azure-container-instance
-- azure-kubernetes-service
-- qdrant vector database (oss)
-- docker
-
-languages:
-- json
-- yaml
-- bicep
----
 
 # Qdrant Vector DB with Volume on Azure 
 
@@ -61,7 +46,8 @@ To deploy Qdrant to a cluster running in Azure Kubernetes Services, go to the `A
 
 **Docker (Local)**
 
-To deploy Qdrant to a cluster running in Azure Kubernetes Service, go to the `Azure-Kubernetes-Svc` folder and follow instructions in the `README.md` to deploy to a Kubernetes cluster with Load Balancer on Azure Kubernetes Services (AKS).
+To run the Qdrant vector database running in Docker locally, please follow the instructions from Qdrant's website: 
+[Install Qdrant with Docker](https://qdrant.tech/documentation/install/#with-docker)
 
 ## Resources
 
