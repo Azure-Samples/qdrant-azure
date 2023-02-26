@@ -1,21 +1,7 @@
-# Use postgres/example user/password credentials
+# Deploy Qdrant locally with Docker on Windows
 version: '3.1'
 
 services:
-  db:
-    image: postgres:14
-    restart: always
-    ports:
-      - '127.0.0.1:5432:5432'
-    environment:
-      POSTGRES_USER: octols
-      POSTGRES_PASSWORD: hfh45-JGThj
-      POSTGRES_INITDB_ARGS: --encoding=UTF-8 --lc-collate=C --lc-ctype=C
-      PGDATA: /var/lib/postgresql/data/postgres
-      LC_COLLATE: UTF-8
-      LC_CTYPE: UTF-8
-    volumes:
-      - d:\workspace\mydata:/var/lib/postgresql/data
   vectordb:
     image: qdrant/qdrant:v0.10.2
     restart: always

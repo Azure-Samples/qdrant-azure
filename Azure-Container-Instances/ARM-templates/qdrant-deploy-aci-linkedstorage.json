@@ -2,21 +2,21 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "variables": {
-        "storageAccountName": "[concat(parameters('storageaccountname'), uniqueString(resourceGroup().id))]"
+        "storageAccountname": "[concat(parameters('storageaccountname'), uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
             "name": "linkedTemplate",
             "type": "Microsoft.Resources/deployments",
-            "apiVersion": "2021-04-01",
+            "apiVersion": "2021-09-01",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
                     "relativePath": "linkedStorageAccount.json"
                 },
-            "   parameters": {
+               "parameters": {
                     "storageAccountName": {
-                        "value": "[variables('storageAccountName')]"
+                        "value": "[variables('storageAccountname')]"
                     },
                     "location": {
                         "value": "[parameters('location')]"
@@ -68,11 +68,11 @@
                 "type": "Public",
                 "ports": [
                     {
-                        "protocol": "Tcp",
+                        "protocol": "TCP",
                         "port": 6333
                     },
                     {
-                        "protocol": "Tcp",
+                        "protocol": "TCP",
                         "port": 80
                     }
                 ],
@@ -80,7 +80,7 @@
                 },
                 "volumes": [
                     {
-                        "name": "filesharevolume",
+                        "name": "[parameters('volumename')]",
                         "azureFile": {
                             "shareName": "[parameters('storagesharename')]",
                             "storageAccountName": "[parameters('storageAccountName')]",
