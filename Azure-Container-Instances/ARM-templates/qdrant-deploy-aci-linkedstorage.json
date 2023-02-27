@@ -56,7 +56,7 @@
                             "volumeMounts": [
                                 {
                                     "name": "[parameters('volumename')]",
-                                    "mountPath": "/aci/qdrant"
+                                    "mountPath": "/qdrant/storage"
                                 }
                             ]
 
