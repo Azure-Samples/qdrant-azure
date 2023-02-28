@@ -1,0 +1,186 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",    
+    "parameters": 
+    {
+        "containergroupname": {
+            "type": "string",
+            "defaultValue": "qdrant-aci",
+            "metadata": {
+            "description": "Name of the container group"
+            }
+        },
+        "containername": {
+            "type": "string",
+            "defaultValue": "qdrant",
+            "metadata": {
+            "description": "Name of the container"
+            }
+        },
+        "volumename": {
+            "type": "string",
+            "defaultValue": "qdrant-volume",
+            "metadata": {
+            "description": "Name of the volume"
+            }
+        },
+        "storagesharename": {
+            "type": "string",
+            "defaultValue": "qdrant-share",
+            "metadata": {
+            "description": "Name of the storage share"
+            }
+        },
+        "storageaccountname": {
+            "type": "string",
+            "defaultValue": "qdrantstorage",
+            "metadata": {
+            "description": "Name of the storage account"
+            }
+        },
+        "storageaccountkey": {
+            "type": "string",
+            "defaultValue": "storageaccountkey",
+            "metadata": {
+            "description": "Key of the storage account"
+            }
+        },
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]",
+            "metadata": {
+            "description": "Location for all resources."
+            }
+        },
+            "imageName": {
+            "type": "string",
+            "defaultValue": "qdrant/qdrant:latest",
+            "metadata": {
+            "description": "Name of the image"
+            }
+        },
+        "numberCpuCores": {
+            "type": "int",
+            "defaultValue": 4,
+            "metadata": {
+            "description": "Number of CPU cores"
+            }
+        },
+        "memory": {
+            "type": "int",
+            "defaultValue": 1,
+            "metadata": {
+            "description": "Memory in GB"
+            }
+        },
+        "ipAddressType": {
+            "type": "string",
+            "defaultValue": "Public",
+            "allowedValues": [
+            "Public",
+            "Private"
+            ],
+            "metadata": {
+            "description": "IP address type"
+            }
+        },
+        "dnsNameLabel": {
+            "type": "string",
+            "defaultValue": "qdrant",
+            "metadata": {
+            "description": "DNS name label"
+            }
+        }
+    },
+    "variables": {
+        "storageAccountname": "[concat(parameters('storageaccountname'), uniqueString(resourceGroup().id))]", 
+        "dnsname": "[concat(parameters('dnsNameLabel'), uniqueString(resourceGroup().id))]"
+    },
+    "resources": [
+        {
+            "name": "linkedTemplate",
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2021-09-01",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "relativePath": "linkedStorageAccount.json"
+                },
+               "parameters": {
+                    "storageAccountName": {
+                        "value": "[variables('storageAccountname')]"
+                    },
+                    "location": {
+                        "value": "[parameters('location')]"
+                    }
+                }
+            }
+        },
+        {
+            "name": "[parameters('containergroupname')]",
+            "type": "Microsoft.ContainerInstance/containerGroups",
+            "apiVersion": "2022-10-01-preview",
+            "location":"[resourceGroup().location]",
+            "properties": {
+                "sku": "Standard",
+                "containers": [
+                    {
+                        "name": "[parameters('containername')]",
+                        "properties":{
+                            "image": "[parameters('imageName')]",
+                            "ports": [
+                                {
+                                    "protocol": "TCP",
+                                    "port": 80
+                                },
+                                {
+                                    "protocol": "TCP",
+                                    "port": 6333
+                                }
+                            ],
+                            "environmentVariables": [],
+                            "resources": {
+                                "requests": {
+                                    "memoryInGB": "[parameters('memory')]",
+                                    "cpu": "[parameters('numberCpuCores')]"
+                                }
+                            }, 
+                            "volumeMounts": [
+                                {
+                                    "name": "[parameters('volumeName')]",
+                                    "mountPath": "/qdrant/storage"
+                                }
+                            ]
+
+                        }
+                    }
+                ],    
+                "osType": "Linux",
+                "ipAddress": {
+                "type": "[parameters('ipAddressType')]",
+                "ports": [
+                    {
+                        "protocol": "TCP",
+                        "port": 6333
+                    },
+                    {
+                        "protocol": "TCP",
+                        "port": 80
+                    }
+                ],
+                "dnsNameLabel": "[variables('dnsname')]"
+                },
+                "volumes": [
+                    {
+                        "name": "[parameters('volumeName')]",
+                        "azureFile": {
+                            "shareName": "[parameters('storagesharename')]",
+                            "storageAccountName": "[parameters('storageAccountName')]",
+                            "storageAccountKey": "[parameters('storageaccountkey')]"
+                        }
+                    }
+                 ]
+            }   
+        }
+    ]
+}

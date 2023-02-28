@@ -18,10 +18,10 @@
             "value": "azqdrantvolume"
         },
         "numberCpuCores": {
-            "value": "4"
+            "value": 4
         },
         "memory": {
-            "value": "16"
+            "value": 16
         },
         "ipAddressType": {
             "value": "Public"
@@ -34,18 +34,6 @@
         },
         "storagesharename": {
             "value": "aciqdrantshare"
-        },
-        "ports": {
-            "value": [
-                {
-                    "port": "6333",
-                    "protocol": "TCP"
-                },
-                {
-                    "port": "80",
-                    "protocol": "TCP"
-                }
-            ]
         },
         "dnsNameLabel": {
             "value": "qdrant-aci-dns"
