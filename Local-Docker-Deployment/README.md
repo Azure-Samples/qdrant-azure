@@ -40,36 +40,19 @@ Ensure that the Docker engine service is running on your computer. Docker can be
 
 To configure docker services for Qdrant Docker, please follow the instructions below.
 
-### Step 1: Locate and rename yaml file for Operating System
-In this folder `Local-Docker-Deployment` you will find `docker-compose` yaml files for Windows and Mac operating systems. Select the file that is appropriate for your operating system, and create a copy of it. Rename the copied yaml file `docker-compose.yaml`
+**Docker (Local)**
 
-- Windows: `example-windows-docker-compose.yaml`
-- Mac: `example-mac-docker-compose.yaml`
+To run the Qdrant vector database running in Docker locally, please follow the instructions from Qdrant's website: 
+[Install Qdrant with Docker](https://qdrant.tech/documentation/install/#with-docker)
 
-### Step 2: Update Docker Compose file
-Open the newly renamed file, `docker-compose.yaml`, with the text editor of your choice.
+To run Qdrant with Docker locally, you can use the following command using  default values stored in the file .config/config.yaml located in the Local Docker folder. 
 
-Adjust the volumes to point to your data directory (see previous note about My Data).
-For instance, if you want to store your data  in `D:\QdrantDocker\MyData`, replace
+```bash
+docker run -p 6333:6333 \
+    -v $(pwd)/path/to/data:/qdrant/storage \
+    -v $(pwd)/path/to/custom_config.yaml:/qdrant/config/production.yaml \
+    qdrant/qdrant
+```
+You can overwrite values by creating and adding new records to a file ./config/production.yaml. An example of the production.yaml file located in the Local-Docker directory. Please review the [Qdrant documentation](https://qdrant.tech/documentation/install/#configuration) to learn more information on configuration options.
 
-    - d:\workspace\mydata\qdrant:/qdrant/storage
 
-with
-
-    - D:\QdrantDocker\MyData\qdrant:/qdrant/storage
-
-Be sure to keep the file indentation the same in order for the configuration file to run successfully.
-
-### Step 3: Start Docker services
-
-**For Windows:** 
-Go to folder where you cloned the repo.  Open a command line and run the the following commands: 
-    cd Local-Docker-Deployment
-    start.cmd
-
-**For Mac:**
-Go to folder where you cloned the repo. Open a terminal and run the following commands: 
-    cd Local-Docker-Deployment
-    start.sh
-
-[Docker start](./img/docker-start.png)

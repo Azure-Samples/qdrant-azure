@@ -34,9 +34,9 @@ To get started, users will need access to an Azure subscription.
 
 To deploy Qdrant to an Azure Container Instance with Azure Volume, go to the `Azure-Container-Instances` folder and follow instructions in the `README.md` to deploy to the Azure Container Instances (ACI) service.
 
-Additionally, you can deploy using the **Deploy to Azure button** below. (Please ensure that you already have storage set up in Azure) 
+Additionally, you can deploy using the **Deploy to Azure button** below. 
 
-If using the **Deploy to Azure button**, you will need to have a storage account set up in Azure previously. Update the`storageaccountname` parameter in the `qdrant-deploy-aci.parameters.json` file in the `Azure-Container-Instances` directory with your existing storage account name.
+If using the **Deploy to Azure button**, this setup a storage account in Azure for you. Please ensure you have permissions for Azure Container Services and Azure Storage Accounts.
 
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-azure-multideploy%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-linkedstorage.json)
 
@@ -48,6 +48,16 @@ To deploy Qdrant to a cluster running in Azure Kubernetes Services, go to the `A
 
 To run the Qdrant vector database running in Docker locally, please follow the instructions from Qdrant's website: 
 [Install Qdrant with Docker](https://qdrant.tech/documentation/install/#with-docker)
+
+To run Qdrant with Docker locally, you can use the following command using  default values stored in the file .config/config.yaml located in the Local Docker folder. 
+
+```bash
+docker run -p 6333:6333 \
+    -v $(pwd)/path/to/data:/qdrant/storage \
+    -v $(pwd)/path/to/custom_config.yaml:/qdrant/config/production.yaml \
+    qdrant/qdrant
+```
+You can overwrite values by creating and adding new records to a file ./config/production.yaml. An example of the production.yaml file located in the Local-Docker directory. Please review the [Qdrant documentation](https://qdrant.tech/documentation/install/#configuration) to learn more information on configuration options.
 
 ## Resources
 
