@@ -2,7 +2,8 @@
     "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "variables": {
-        "storageAccountname": "[concat(parameters('storageaccountname'), uniqueString(resourceGroup().id))]"
+        "storageAccountname": "[concat(parameters('storageaccountname'), uniqueString(resourceGroup().id))]", 
+        "dnsname": "[concat(parameters('dnsNameLabel'), uniqueString(resourceGroup().id))]"
     },
     "resources": [
         {
@@ -65,7 +66,7 @@
                 ],    
                 "osType": "Linux",
                 "ipAddress": {
-                "type": "Public",
+                "type": "[parameters('ipAddressType')]",
                 "ports": [
                     {
                         "protocol": "TCP",
@@ -76,11 +77,11 @@
                         "port": 80
                     }
                 ],
-                "dnsNameLabel": "qdrant-aci-dns"
+                "dnsNameLabel": "[variables('dnsname')]"
                 },
                 "volumes": [
                     {
-                        "name": "[parameters('volumename')]",
+                        "name": "[parameters('volumeName')]",
                         "azureFile": {
                             "shareName": "[parameters('storagesharename')]",
                             "storageAccountName": "[parameters('storageAccountName')]",
