@@ -35,7 +35,7 @@
                     {
                         "name": "[parameters('containername')]",
                         "properties":{
-                            "image": "qdrant/qdrant",
+                            "image": "[parameters('imageName')]",
                             "ports": [
                                 {
                                     "protocol": "TCP",
@@ -49,13 +49,13 @@
                             "environmentVariables": [],
                             "resources": {
                                 "requests": {
-                                    "memoryInGB": 16,
-                                    "cpu": 4
+                                    "memoryInGB": "[parameters('memory')]",
+                                    "cpu": "[parameters('numberCpuCores')]"
                                 }
                             }, 
                             "volumeMounts": [
                                 {
-                                    "name": "[parameters('volumename')]",
+                                    "name": "[parameters('volumeName')]",
                                     "mountPath": "/qdrant/storage"
                                 }
                             ]
