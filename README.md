@@ -38,7 +38,7 @@ Additionally, you can deploy using the **Deploy to Azure button** below.
 
 If using the **Deploy to Azure button**, this setup a storage account in Azure for you. Please ensure you have permissions for Azure Container Services and Azure Storage Accounts.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-azure-multideploy%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-linkedstorage.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fgithub.com%2FAzure-Samples%2Fqdrant-azure%2Fblob%2Fmain%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-linkedstorage.json)
 
 **Azure Kubernetes Service**
 
