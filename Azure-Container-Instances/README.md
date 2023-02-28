@@ -20,7 +20,6 @@ languages:
 
 # Qdrant Vector DB with Volume on Azure 
 
-
 ## Features
 This project framework provides the following features:
 
@@ -35,28 +34,23 @@ You can get started by using the Deploy the Azure button shown above or by going
 ### Prerequisites
 
 To get started, users will need access to an Azure subscription. 
+Users will need to have permissions in their Azure subscription to for Azure Container Instances and Azure Storage.
 
-If using the **Deploy to Azure button**, you will need a storage account set up in Azure. When you select the Deploy to Azure button, the template will create a storage account for you. 
-
-If you wish to use an existing storage account, please update the`storageaccountname` parameter in the [`qdrant-deploy-aci.parameters.json`](./ARM-templates/qdrant-deploy-aci.parameters.json) file in this directory and run the `qdrant-deploy-aci.json` ARM template in the [`ARM-templates`](./ARM-templates) directory by following the Deployment steps below.
+If using the **Deploy to Azure button**, you will need a storage account set up in Azure. When you select the Deploy to Azure button, the template will **create** a storage account for you. 
 
 ### Installation
 
 **Azure Container Instances**
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-azure-multideploy%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-linkedstorage.json)
-
-
-
 ## Deployment
 
 These templates demonstrates a simple way to deploy the Qdrant vector database with a volume for [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/).
 
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-azure-multideploy%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-linkedstorage.json)
+
 Option 1: Click on Deploy to Azure button above to quickly deploy to your subscription with an Azure Container Instance. Please ensure that you have reviewed the prerequisites and installation steps above.
 
 Option 2: You can also deploy using the Azure CLI.
-
-Deploy the Azure Container Instance with an existing storage account volume using the ARM template `qdrant-aci-deploy.json` located in this directory. Pass the name of the existing storage account in the `storageaccountname` parameter in command line for Azure CLI or Azure Powershell.
 
 Deploy the Azure Container Instance with a new storage account volume created using the ARM template `qdrant-deploy-aci-linkedstorage.json` located in the [`ARM-templates`](./ARM-templates) directory.
 
@@ -68,12 +62,7 @@ To deploy using the Azure CLI, open the command line and run the following comma
   
   Example of raw Github link: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
 
-  If passing the parameter for your existing storage account name, add the following to the command above:
-  --parameters storageaccountname=<insert storage name here> 
-
 Option 3: You can also deploy using the Azure Powershell.
-
-Deploy the Azure Container Instance with an existing storage account volume using the ARM template `qdrant-aci-deploy.json` located in this directory. Pas the name of your existing storage account in the `storageaccountname` parameter in command line for Azure Powershell. 
 
 Deploy the Azure Container Instance with a new storage account volume using the ARM template `qdrant-deploy-aci-linkedstorage.json` located in the [`ARM-templates`](./ARM-templates) directory.
 
@@ -85,9 +74,6 @@ To deploy using the Azure Powershell, open the Powershell command line and run t
   -TemplateUri <Insert-the Github raw link for template you wish to run> 
   
   Example of format of raw Github link: https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json
-
-  If passing the parameter for your existing storage account name, add the following to the command above:
-  -storageaccountname="<insert storage name here>" 
 
 ## Resources
 

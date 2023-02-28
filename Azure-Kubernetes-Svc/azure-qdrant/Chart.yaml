@@ -1,0 +1,9 @@
+apiVersion: v2
+name: azure-qdrant
+description: Qdrant deployment on Azure Cloud
+type: application
+version: 1.0.0
+dependencies: 
+  - name: qdrant
+    version: 0.2.7
+    repository: https://qdrant.github.io/qdrant-helm
