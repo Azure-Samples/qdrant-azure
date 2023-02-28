@@ -1,8 +1,7 @@
 # Qdrant Vector Database on Azure Cloud
 
 
-![Qdrant](./img/Qdrant.png) ![Azure](./img/Azure.png)
-
+![Qdrant](./img/Qdrant.png)
 Run the Qdrant vector engine (vector database) on Azure using:
 - **Azure Container Instance**
 - **Azure Kubernetes Service**
