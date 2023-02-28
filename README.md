@@ -2,6 +2,7 @@
 
 
 ![Qdrant](./img/Qdrant.png)
+
 Run the Qdrant vector engine (vector database) on Azure using:
 - **Azure Container Instance**
 - **Azure Kubernetes Service**
