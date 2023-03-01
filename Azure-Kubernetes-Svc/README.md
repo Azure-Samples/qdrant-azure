@@ -26,10 +26,11 @@ This project framework provides the following features:
 * To get started, users will need access to an Azure subscription.
 * Users will also need to have the following installed on their local machine:
 
--- **Helm:** 
-Helm can be installed via package manager or with the Helm script provided in folder `scripts` in this directory. 
--- **Kubectl:** 
-Tools for Kubernetes will need to installed. You install kubectl using the Azure CLI by executing the command. 
+  -- **Helm:** 
+  Helm can be installed via package manager or with the Helm script provided in folder `scripts` in this directory. 
+
+  -- **Kubectl:** 
+  Tools for Kubernetes will need to installed. You install kubectl using the Azure CLI by executing the command. 
 
 ```bash
 az aks install-cli
@@ -40,9 +41,9 @@ Alternative kubectl installation: Following the instructions in the Kubernetes d
 
 **Azure Kubernetes Service**
 
-To deploy the Qdrant service on Azure Kubernetes Service with Azure Volume, you must first ensure that a AKS cluster is running. You can create a cluster using the Deploy to Azure button below, or manually using the Azure Portal or Azure CLI.
+To deploy the **Qdrant** service on **Azure Kubernetes Service** with Azure Volume, you must first ensure that a AKS cluster is running. You can create a cluster using the Deploy to Azure button below, or manually using the Azure Portal or Azure CLI.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Kubernetes-Svc%2Faks-arm-deploy.json)
 
 After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernetes Service with Helm. Go to the `qdrant-on-azure` folder which contains the Helm chart for Qdrant and run the following commands:
 
