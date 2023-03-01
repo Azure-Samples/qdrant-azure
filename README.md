@@ -44,14 +44,19 @@ If using the **Deploy to Azure button**, this setup a storage account in Azure f
 
 **Azure Kubernetes Service**
 
-To deploy Qdrant to a cluster running in Azure Kubernetes Services, go to the `Azure-Kubernetes-Svc` folder and follow instructions in the `README.md` to deploy to a Kubernetes cluster with Load Balancer on Azure Kubernetes Services (AKS).
+To deploy Qdrant to a cluster running in Azure Kubernetes Services, go to the `Azure-Kubernetes-Svc` folder and follow instructions in the `README.md` to deploy to a Kubernetes cluster with Load Balancer on Azure Kubernetes Services (AKS). 
+
+You can quickly create an **Azure Kubernetes Service** cluster by clicking the Deploy to Azure button below. After creating your AKS cluster, go to the `Azure-Kubernetes-Svc` folder to deploy **Qdrant** into the AKS cluster using **Helm**.
+
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Kubernetes-Svc%2Faks-arm-deploy.json)
+
 
 **Docker (Local)**
 
-To run the Qdrant vector database running in Docker locally, please follow the instructions from Qdrant's website: 
+To run the **Qdrant** vector database running in **Docker** locally, please follow the instructions from Qdrant's website: 
 [Install Qdrant with Docker](https://qdrant.tech/documentation/install/#with-docker)
 
-To run Qdrant with Docker locally, you can use the following command using  default values stored in the file .config/config.yaml located in the Local Docker folder. 
+To run Qdrant with Docker locally, you can use the following command using  default values stored in the file `.config/config.yaml` located in the `Local-Docker-Deployment` folder. 
 
 ```bash
 docker run -p 6333:6333 \
@@ -59,7 +64,7 @@ docker run -p 6333:6333 \
     -v $(pwd)/path/to/custom_config.yaml:/qdrant/config/production.yaml \
     qdrant/qdrant
 ```
-You can overwrite values by creating and adding new records to a file ./config/production.yaml. An example of the production.yaml file located in the Local-Docker directory. Please review the [Qdrant documentation](https://qdrant.tech/documentation/install/#configuration) to learn more information on configuration options.
+You can overwrite values by creating and adding new records to a file `./config/production.yaml`. An example of the production.yaml file located in the `Local-Docker-Deployment` directory. Please review the [Qdrant documentation](https://qdrant.tech/documentation/install/#configuration) to learn more information on configuration options for **Qdrant**.
 
 ## Resources
 
