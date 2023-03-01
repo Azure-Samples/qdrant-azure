@@ -1,7 +1,6 @@
 # Qdrant Vector Database on Azure Cloud
 
 
-
 ![Qdrant](./img/Qdrant.png)] ![Azure](./img/Azure.png)
 
 Run the Qdrant vector engine (vector database) on Azure using:
@@ -28,6 +27,8 @@ This project framework provides the following features:
 ### Prerequisites
 
 To get started, users will need access to an Azure subscription.
+
+To deploy using the Deploy to Azure button which leverages an ARM template, you need write access on the resources you're deploying and access to all operations on the Microsoft.Resources/deployments resource type.
 
 ### Installation
 
