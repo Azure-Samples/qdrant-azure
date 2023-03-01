@@ -1,7 +1,7 @@
 # Qdrant Vector Database on Azure Cloud
 
 
-![Qdrant](./img/Qdrant.png)] ![Azure](./img/Azure.png)
+![Qdrant](./img/Qdrant.png) ![Azure](./img/Azure.png)
 
 Run the Qdrant vector engine (vector database) on Azure using:
 - **Azure Container Instance**
@@ -40,7 +40,7 @@ Additionally, you can deploy using the **Deploy to Azure button** below.
 
 If using the **Deploy to Azure button**, this setup a storage account in Azure for you. Please ensure you have permissions for Azure Container Services and Azure Storage Accounts.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fdev-azure-multideploy%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-linkedstorage.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-linkedstorage-params.json)
 
 **Azure Kubernetes Service**
 
