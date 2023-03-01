@@ -139,9 +139,9 @@
         {
             "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
             "apiVersion": "2021-09-01",
-            "name": "[format('{0}/default/{1}', parameters('storageAccountName'), parameters('fileShareName'))]",
+            "name": "[format('{0}/default/{1}', variables('storageAccountname'), parameters('fileShareName'))]",
             "dependsOn": [
-                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+                "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountname'))]"
             ]
         },
         {
