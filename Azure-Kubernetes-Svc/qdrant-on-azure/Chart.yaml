@@ -1,0 +1,11 @@
+apiVersion: v2
+name: qdrant-on-azure
+description: A Helm chart for Azure Kubernetes Service to run Qdrant
+type: application
+version: 0.1.0
+appVersion: "1.0.0"
+
+dependencies: 
+  - name: qdrant
+    version: ">= 0.2.8"
+    repository: https://qdrant.github.io/qdrant-helm
