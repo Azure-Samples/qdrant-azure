@@ -64,6 +64,7 @@ You can overwrite values by creating and adding new records to a file ./config/p
 ## Resources
 
 - Qdrant Vector Search (Vector Database): https://qdrant.tech/
+- Qdrant Integration with OpenAI: https://qdrant.tech/documentation/integrations/#openai
 - Azure Container Instances (ACI): https://learn.microsoft.com/en-us/azure/container-instances/
 - Azure Kubernetes Service (AKS): https://learn.microsoft.com/en-us/azure/aks/
 - Docker Desktop: https://docs.docker.com/desktop/ 

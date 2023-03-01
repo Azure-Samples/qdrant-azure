@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{ include "qdrant.fullname" . }}-loadbalancer
+spec:
+  type: LoadBalancer
+  ports:
+    {{- range .Values.service.ports }}
+      - name: {{ .name }}
+        port: {{ .port }}
+        targetPort: {{ .targetPort }}
+        protocol: {{ .protocol | default "TCP" }}
+      {{- end }}
+  selector:
+    {{- include "qdrant-on-azure.selectorLabels" . | nindent 4 }}
