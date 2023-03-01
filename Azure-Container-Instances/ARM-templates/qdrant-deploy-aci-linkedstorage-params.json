@@ -24,6 +24,23 @@
             "description": "Name of the volume"
             }
         },
+        "storageSKU": {
+            "type": "string",
+            "defaultValue": "Standard_LRS",
+            "allowedValues": [
+            "Standard_LRS",
+            "Standard_GRS",
+            "Standard_RAGRS",
+            "Standard_ZRS",
+            "Premium_LRS",
+            "Premium_ZRS",
+            "Standard_GZRS",
+            "Standard_RAGZRS"
+            ],
+            "metadata": {
+                "description": "Specify the storage account type."
+            }
+        },
         "storagesharename": {
             "type": "string",
             "defaultValue": "qdrant-share",
@@ -43,6 +60,15 @@
             "defaultValue": "storageaccountkey",
             "metadata": {
             "description": "Key of the storage account"
+            }
+        },
+        "fileShareName": {
+            "type": "string",
+            "defaultValue": "aciqdrantshare",
+            "maxLength": 63,
+            "minLength": 3,
+            "metadata": {
+                "description": "Specifies the name of the File Share. File share names must be between 3 and 63 characters in length and use numbers, lower-case letters and dash (-) only."
             }
         },
         "location": {
@@ -98,23 +124,25 @@
     },
     "resources": [
         {
-            "name": "linkedTemplate",
-            "type": "Microsoft.Resources/deployments",
+            "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2021-09-01",
+            "name": "[variables('storageAccountname')]",
+            "location": "[parameters('location')]",
+            "sku": {
+            "name": "[parameters('storageSKU')]"
+            },
+            "kind": "StorageV2",
             "properties": {
-                "mode": "Incremental",
-                "templateLink": {
-                    "relativePath": "linkedStorageAccount.json"
-                },
-               "parameters": {
-                    "storageAccountName": {
-                        "value": "[variables('storageAccountname')]"
-                    },
-                    "location": {
-                        "value": "[parameters('location')]"
-                    }
-                }
+            "supportsHttpsTrafficOnly": true
             }
+        },
+        {
+            "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+            "apiVersion": "2021-09-01",
+            "name": "[format('{0}/default/{1}', parameters('storageAccountName'), parameters('fileShareName'))]",
+            "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName'))]"
+            ]
         },
         {
             "name": "[parameters('containergroupname')]",
