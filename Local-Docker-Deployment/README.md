@@ -45,7 +45,7 @@ To configure docker services for Qdrant Docker, please follow the instructions b
 To run the Qdrant vector database running in Docker locally, please follow the instructions from Qdrant's website: 
 [Install Qdrant with Docker](https://qdrant.tech/documentation/install/#with-docker)
 
-To run Qdrant with Docker locally, you can use the following command using  default values stored in the file .config/config.yaml located in the Local Docker folder. 
+You can use the following Docker command to run Qdrant using default values stored in the file [.config/config.yaml](./.config/config.yaml) located in the Local Docker Deployment folder. 
 
 ```bash
 docker run -p 6333:6333 \
@@ -53,6 +53,6 @@ docker run -p 6333:6333 \
     -v $(pwd)/path/to/custom_config.yaml:/qdrant/config/production.yaml \
     qdrant/qdrant
 ```
-You can overwrite values by creating and adding new records to a file ./config/production.yaml. An example of the production.yaml file located in the Local-Docker directory. Please review the [Qdrant documentation](https://qdrant.tech/documentation/install/#configuration) to learn more information on configuration options.
+You can overwrite values by creating and adding new records to a file ./config/production.yaml. An example of the [production.yaml](./.config/production.yaml) file located in the Local-Docker directory. Please review the [Qdrant documentation](https://qdrant.tech/documentation/install/#configuration) to learn more information on configuration options.
 
 
