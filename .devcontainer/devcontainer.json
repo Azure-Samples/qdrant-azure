@@ -1,0 +1,32 @@
+{
+    "name": "qdrant on Azure",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "args": {
+            "VARIANT": "bullseye"
+        }
+    },
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {},
+        "ghcr.io/devcontainers/features/azure-cli:1": {},
+        "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
+            "version": "latest"
+        },
+        "ghcr.io/stuartleeks/dev-container-features/azure-cli-persistence:0": {
+            "version": "latest"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "redhat.vscode-yaml",
+                "ms-azuretools.vscode-bicep",
+                "ms-azure-devops.azure-pipelines",
+                "ms-vscode.azure-account",
+                "ms-vscode.vscode-node-azure-pack",
+                "davidanson.vscode-markdownlint",
+                "github.vscode-pull-request-github"
+            ]
+        }
+    }
+}
