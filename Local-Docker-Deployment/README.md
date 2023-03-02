@@ -1,40 +1,23 @@
 # Qdrant Vector Database on Azure Cloud
-Install Qdrant vector database on Azure using:
+Install the Qdrant vector database on Azure using:
+- **Qdrant container in Docker Desktop**
 
-**Qdrant container in Docker Desktop**
-
-## Project Information
----
-Description: This provides resources to deploy the Qdrant Vector database to Docker on your local desktop using Docker Desktop and PostgreSQL.
-page_type: sample
-
-Products:
-- docker
-- qdrant vector database (oss)
-
-languages:
-- json
-- yaml
----
-
-# Qdrant Vector DB on Docker Desktop
-
-## Software dependencies
-- **Docker engine**
-- **Qdrant vector search engine** 
+# Getting Started
 
 ## Installation
 
 Install the following software on your machine:
 - Install the [Docker engine](https://docs.docker.com/engine/install). 
-Note: Docker is used to run [Qdrant](https://qdrant.tech) vector search engine. To persist data, you will need to configure storage (volume) or store your data. You can read more about this in the [Docker Storage documentation](https://docs.docker.com/storage/).
+Note: Docker is used to run [Qdrant](https://qdrant.tech) vector search engine.
+To persist data, you will need to configure storage (volume) or store your data.
+You can read more about this in the [Docker Storage documentation](https://docs.docker.com/storage/).
 
 
 ## Start Docker engine
 
-Ensure that the Docker engine service is running on your computer. Docker can be configured to run automatically when your computer starts. This is the recommended setup.  
+Ensure that the Docker engine service is running on your computer. Docker can be configured to run automatically when your computer starts. This is the recommended setup.
 
-[Docker auto start](../img/docker-autostart.png)
+<img src="../img/docker-autostart.png">
 
 ## Configure Docker
 
