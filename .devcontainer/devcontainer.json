@@ -28,5 +28,6 @@
                 "github.vscode-pull-request-github"
             ]
         }
-    }
+    },
+    "postCreateCommand": "az bicep install"
 }
