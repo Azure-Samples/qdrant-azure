@@ -3,6 +3,9 @@ param location string
 param resourceToken string
 param containerVolumeMountName string = 'azqdrantvolume'
 param storageFileShareName string = 'aciqdrantshare'
+param imageName string = 'qdrant/qdrant:latest'
+param containerMemoryGB int = 16
+param containerCpuCore int = 4
 // param storageShareName string = 'qdrant-share'
 
 var abbrs = loadJsonContent('abbreviations.json')
@@ -36,7 +39,7 @@ resource aci 'Microsoft.ContainerInstance/containerGroups@2022-10-01-preview' = 
       {
         name: name
         properties: {
-          image: 'qdrant/qdrant:latest'
+          image: imageName
           ports: [
             {
               port: 80
@@ -49,20 +52,21 @@ resource aci 'Microsoft.ContainerInstance/containerGroups@2022-10-01-preview' = 
           ]
           resources: {
             requests: {
-              cpu: 4
-              memoryInGB: 16
+              cpu: containerCpuCore
+              memoryInGB: containerMemoryGB
             }
           }
           volumeMounts: [
             {
               name: containerVolumeMountName
-              mountPath: '/aci/qdrant'
+              mountPath: '/qdrant/storage'
             }
           ]
         }
       }
     ]
     osType: 'Linux'
+    restartPolicy: 'OnFailure'
     ipAddress: {
       ports: [
         {
