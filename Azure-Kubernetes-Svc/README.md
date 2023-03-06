@@ -1,43 +1,29 @@
 # Qdrant Vector Database on Azure Cloud
-Qdrant vector database on Azure using:
+Create a Qdrant vector database on Azure using:
 
 - **Azure Kubernetes Service**
-- **Helm (custom chart w/qdrant helm dependency)**
+- **Helm (custom chart w/qdrant helm dependency)** 
 
-## Project Information
----
-This project provides resources to deploy the Qdrant Vector database to Azure Kubernetes Service using a Helm Chart
+# Getting Started
 
+## Prerequisites
+To get started, users will need access to an Azure subscription.
+Users will also need to have the following installed on their local machine:
 
-# Qdrant Vector DB with Volume on Azure 
-
-## Features
-This project framework provides the following features:
-
-* Ability to run a scalable Qdrant cluster on Kubernetes with Azure Kubernetes Service.
-* Ability to deploy the Qdrant vector database using via Azure Kubernetes Service via Helm for use in storing AI generated embeddings 
-* Ability to deploy persistent volume with Azure Kubernetes Service to store/persist Qdrant data
-* Ability to run Qdrant on local desktop with Docker with Kubernetes enabled using Helm.
-
-## Getting Started
-
-### Prerequisites
-
-* To get started, users will need access to an Azure subscription.
-* Users will also need to have the following installed on their local machine:
-
-  -- **Helm:** 
+  - **Helm:** 
   Helm can be installed via package manager or with the Helm script provided in folder `scripts` in this directory. 
 
-  -- **Kubectl:** 
+  - **Kubectl:** 
   Tools for Kubernetes will need to installed. You install kubectl using the Azure CLI by executing the command. 
 
 ```bash
 az aks install-cli
 ```
-Alternative kubectl installation: Following the instructions in the Kubernetes documentation noted here: https://kubernetes.io/docs/tasks/tools/#kubectl As a convenience, a kubectl install script is provided in the `scripts` folder in this directory.
+Alternative kubectl installation: Following the instructions in the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/#kubectl).
 
-### Installation
+As a convenience, a kubectl install script is provided in the `scripts` folder in this directory.
+
+## Installation
 
 **Azure Kubernetes Service**
 
@@ -59,7 +45,7 @@ kubectl get nodes
  helm install <your-release-name> qdrant-on-azure --namespace azqrant --create-namespace
 ```
 
-## Resources
+## Resources to Learn More
 
 - Azure Kubernetes Service: https://learn.microsoft.com/en-us/azure/aks/
 - Azure Kubernetes Service with Helm: https://learn.microsoft.com/en-us/azure/aks/quickstart-helm

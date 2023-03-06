@@ -15,7 +15,8 @@ This project framework provides the following features:
 ### Prerequisites
 
 To get started, users will need access to an Azure subscription.
-Users will need to have permissions in their Azure subscription for Azure Container Instances and Azure Storage.
+Users will need to have permissions in their Azure subscription for Azure Container
+Instances and Azure Storage.
 
 If using the **Deploy to Azure button**, you will need an Azure Storage account. When you select the Deploy to Azure button, the template will **create** a storage account for you.
 
