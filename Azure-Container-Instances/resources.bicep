@@ -1,12 +1,26 @@
-param name string
-param location string
+@description('Azure region for provisioned resources.')
+param location string = resourceGroup().location
+
+@description('Suffix for provisioned Azure resources.')
 param resourceToken string
+
+@description('Name of the ACI container volumn.')
 param containerVolumeMountName string = 'azqdrantvolume'
+
+@description('Name of the Azure Storage file share to be created.')
 param storageFileShareName string = 'aciqdrantshare'
+
+@description('Name of the image to be pulled from Docker Hub.')
 param imageName string = 'qdrant/qdrant:latest'
+
+@description('Memory (in GB) of the container.')
 param containerMemoryGB int = 16
+
+@description('CPU cores of the container.')
 param containerCpuCore int = 4
-// param storageShareName string = 'qdrant-share'
+
+@description('Name of the container.')
+param containerName string
 
 var abbrs = loadJsonContent('abbreviations.json')
 
@@ -31,13 +45,13 @@ resource storage 'Microsoft.Storage/storageAccounts@2022-09-01' = {
 }
 
 resource aci 'Microsoft.ContainerInstance/containerGroups@2022-10-01-preview' = {
-  name: '${abbrs.containerInstanceContainerGroups}${name}${resourceToken}'
+  name: '${abbrs.containerInstanceContainerGroups}${resourceToken}'
   location: location
   properties: {
     sku: 'Standard'
     containers: [
       {
-        name: name
+        name: containerName
         properties: {
           image: imageName
           ports: [

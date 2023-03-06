@@ -4,6 +4,7 @@ targetScope = 'subscription'
 @description('Primary location for all resources')
 param location string = 'eastus'
 
+@description('Name used for resource group and to generate a unique string for deployed resources.')
 param environmentName string = 'qdrantazure'
 
 var abbrs = loadJsonContent('abbreviations.json')
@@ -20,6 +21,6 @@ module qdrant 'resources.bicep' = {
   params: {
     location: location
     resourceToken: resourceToken
-    name: environmentName
+    containerName: environmentName
   }
 }
