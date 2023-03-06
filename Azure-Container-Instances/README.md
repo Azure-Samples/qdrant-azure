@@ -35,7 +35,7 @@ Alternatively, you can deploy the solution using the either the Azure CLI or Azu
 
 ###### Azure CLI
 
-Deploy the Azure Container Instance with a new storage account volume created using the ARM template `qdrant-deploy-aci-linkedstorage-params.json` located in the [`ARM-templates`](./ARM-templates) directory.
+Deploy the Azure Container Instance with a new storage account volume created using the Bicep template `main.bicep` located this directory directory.
 
 To deploy using the Azure CLI, open the command line and run the following command:
 
@@ -43,14 +43,12 @@ To deploy using the Azure CLI, open the command line and run the following comma
   az deployment group create \
   --name ExampleDeployment \
   --resource-group ExampleGroup \
-  --template-uri azuredeploy.json \
+  --template-file main.bicep \
 ```
-
-Example of raw Github link: <https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json>
 
 ###### Azure PowerShell
 
-Deploy the Azure Container Instance with a new storage account volume using the ARM template `qdrant-deploy-aci-linkedstorage.json` located in the [`ARM-templates`](./ARM-templates) directory.
+Deploy the Azure Container Instance with a new storage account volume using the Azure Bicep template `main.bicep` located in this directory.
 
 To deploy using the Azure Powershell, open the Powershell command line and run the following command:
 
@@ -58,10 +56,8 @@ To deploy using the Azure Powershell, open the Powershell command line and run t
    New-AzResourceGroupDeployment `
       -Name remoteTemplateDeployment `
       -ResourceGroupName ExampleGroup `
-      -TemplateUri azuredeploy.json
+      -TemplateFile main.bicep
 ```
-  
-Example of format of raw Github link: <https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/quickstarts/microsoft.storage/storage-account-create/azuredeploy.json>
 
 ## Resources
 
