@@ -60,9 +60,9 @@ To deploy using the Azure Powershell, open the Powershell command line and run t
       -TemplateFile main.bicep
 ```
 
-## Resources
+## Resources to learn more
 
 For more information in deploying ARM templates please review:
 
-- [Deploy resources with ARM templates and Azure PowerShell](https://learn.microsoft.com/azure/azure-resource-manager/templates/deploy-powershell)
-- [How to use Azure Resource Manager (ARM) deployment templates with Azure CLI](https://learn.microsoft.com/azure/azure-resource-manager/templates/deploy-cli)
+- [Deploy resources with Bicep and Azure PowerShell](https://learn.microsoft.com/azure/azure-resource-manager/bicep/deploy-powershell)
+- [How to deploy resources with Bicep and Azure CLI](https://learn.microsoft.com/azure/azure-resource-manager/bicep/deploy-cli)
