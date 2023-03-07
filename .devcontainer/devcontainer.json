@@ -8,7 +8,10 @@
     },
     "features": {
         "ghcr.io/devcontainers/features/github-cli:1": {},
-        "ghcr.io/devcontainers/features/azure-cli:1": {},
+        "ghcr.io/devcontainers/features/azure-cli:1": {
+            "version": "latest",
+            "installBicep": "true"
+        },
         "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
         "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
             "version": "latest"
