@@ -21,6 +21,8 @@ Alternative kubectl installation: Following the instructions in the [Kubernetes 
 
 As a convenience, a kubectl install script is provided in the `scripts` folder in this directory.
 
+If using the Visual Studio Code dev container, both Helm and Kubectl are already installed.
+
 ### Getting Started
 
 You can get started by using the **Deploy the Azure** button shown below.
@@ -40,7 +42,7 @@ ssh-keygen -t rsa -b 4096
 When prompted, provide the following values:
 
 - **Linux admin username**: Enter a username to connect using SSH, such as _azurek8sadmin_.
-- **SSH RSA public key**: copy and paste the **public** part of your SSH key pair (by default, the contents of _~/.ssh/id_rsa.pub_).
+- **SSH RSA public key**: copy and paste the _public_ part of your SSH key pair (by default, the contents of _~/.ssh/id_rsa.pub_).
 
 ##### Azure CLI
 
