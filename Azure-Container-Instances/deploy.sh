@@ -14,9 +14,3 @@ az deployment sub create \
     --template-file main.bicep \
     --parameters location=$LOCATION
 
-
-
-
-
-
-

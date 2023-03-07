@@ -60,7 +60,7 @@ resource aci 'Microsoft.ContainerInstance/containerGroups@2022-10-01-preview' = 
               protocol: 'TCP'
             }
             {
-              port: 633
+              port: 6333
               protocol: 'TCP'
             }
           ]
@@ -88,7 +88,7 @@ resource aci 'Microsoft.ContainerInstance/containerGroups@2022-10-01-preview' = 
           protocol: 'TCP'
         }
         {
-          port: 633
+          port: 6333
           protocol: 'TCP'
         }
       ]
