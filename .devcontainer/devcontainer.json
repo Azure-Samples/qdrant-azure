@@ -9,6 +9,7 @@
     "features": {
         "ghcr.io/devcontainers/features/github-cli:1": {},
         "ghcr.io/devcontainers/features/azure-cli:1": {},
+        "ghcr.io/devcontainers/features/kubectl-helm-minikube:1": {},
         "ghcr.io/stuartleeks/dev-container-features/shell-history:0": {
             "version": "latest"
         },
@@ -25,7 +26,9 @@
                 "ms-vscode.azure-account",
                 "ms-vscode.vscode-node-azure-pack",
                 "davidanson.vscode-markdownlint",
-                "github.vscode-pull-request-github"
+                "github.vscode-pull-request-github",
+                "ms-kubernetes-tools.vscode-kubernetes-tools",
+                "ms-azuretools.vscode-docker"
             ]
         }
     },
