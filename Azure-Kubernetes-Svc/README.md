@@ -77,6 +77,12 @@ az aks get-credentials --resource-group <your-resource-group-name> --name <your-
 kubectl get nodes
 ```
 
+1. Install the Helm package.
+
+```bash
+helm repo add qdrant-on-azure ./Azure-Kubernetes-Svc/qdrant-on-azure/
+```
+
 1. Install Qdrant on Azure Kubernetes Service with Helm by running the following command in the `qdrant-on-azure` folder:
 
 ```bash
