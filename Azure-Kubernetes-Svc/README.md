@@ -11,17 +11,11 @@ Users will also need to have the following installed on their local machine:
   Helm can be installed via package manager or with the Helm script provided in folder `scripts` in this directory.
 
 - **Kubectl:**
-  Tools for Kubernetes will need to installed. You install kubectl using the Azure CLI by executing the command.
-
-    ```bash
-    az aks install-cli
-    ```
-
-Alternative kubectl installation: Following the instructions in the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/#kubectl).
+  Tools for Kubernetes will need to installed. You install kubectl using the Azure CLI by executing the `az aks install-cli` command.  Alternatively, following the instruction in the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/#kubectl) to install kubectl.
 
 As a convenience, a kubectl install script is provided in the `scripts` folder in this directory.
 
-If using the Visual Studio Code dev container, both Helm and Kubectl are already installed.
+If using the Visual Studio Code dev container, both Helm and Kubectl are installed as features of the dev container.
 
 ### Getting Started
 
@@ -77,16 +71,16 @@ az aks get-credentials --resource-group <your-resource-group-name> --name <your-
 kubectl get nodes
 ```
 
-1. Install the Helm package.
+<!-- 1. Install the Helm package.
 
 ```bash
 helm repo add qdrant-on-azure ./Azure-Kubernetes-Svc/qdrant-on-azure/
-```
+``` -->
 
-1. Install Qdrant on Azure Kubernetes Service with Helm by running the following command in the `qdrant-on-azure` folder:
+1. From the Azure-Kubernetes-Svc directory, install Qdrant on Azure Kubernetes Service with Helm by running the following command:
 
 ```bash
- helm install <your-release-name> qdrant-on-azure --namespace azqrant --create-namespace
+ helm install <your installation name> ./qdrant-on-azure/ --create-namespace
 ```
 
 ## Resources to Learn More
