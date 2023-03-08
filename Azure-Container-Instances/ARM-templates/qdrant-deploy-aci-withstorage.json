@@ -203,8 +203,8 @@
                         "name": "[parameters('volumeName')]",
                         "azureFile": {
                             "shareName": "[parameters('storagesharename')]",
-                            "storageAccountName": "[parameters('storageAccountName')]",
-                            "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value]"
+                            "storageAccountName": "[variables('storageAccountname')]",
+                            "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountname')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value]"
                         }
                     }
                  ]
