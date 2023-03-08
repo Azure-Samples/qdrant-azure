@@ -43,14 +43,14 @@
         },
         "storagesharename": {
             "type": "string",
-            "defaultValue": "qdrant-share",
+            "defaultValue": "qdrantfs",
             "metadata": {
             "description": "Name of the storage share"
             }
         },
         "storageaccountname": {
             "type": "string",
-            "defaultValue": "qdrantstorage",
+            "defaultValue": "qdrantst",
             "metadata": {
             "description": "Name of the storage account"
             }
@@ -204,7 +204,7 @@
                         "azureFile": {
                             "shareName": "[parameters('storagesharename')]",
                             "storageAccountName": "[parameters('storageAccountName')]",
-                            "storageAccountKey": "[parameters('storageaccountkey')]"
+                            "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value]"
                         }
                     }
                  ]
