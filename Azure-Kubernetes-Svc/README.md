@@ -66,22 +66,16 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
 
 1. Configure kubectl to connect to your Kubernetes cluster using the `az aks get-credentials` command:
 
-```bash
-az aks get-credentials --resource-group <your-resource-group-name> --name <your-aks-cluster-name>
-kubectl get nodes
-```
-
-<!-- 1. Install the Helm package.
-
-```bash
-helm repo add qdrant-on-azure ./Azure-Kubernetes-Svc/qdrant-on-azure/
-``` -->
+    ```bash
+    az aks get-credentials --resource-group <your-resource-group-name> --name <your-aks-cluster-name>
+    kubectl get nodes
+    ```
 
 1. From the Azure-Kubernetes-Svc directory, install Qdrant on Azure Kubernetes Service with Helm by running the following command:
 
-```bash
- helm install <your installation name> ./qdrant-on-azure/ --create-namespace
-```
+    ```bash
+    helm install <your installation name> ./qdrant-on-azure/ --create-namespace
+    ```
 
 ## Resources to Learn More
 
