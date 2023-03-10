@@ -77,9 +77,28 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
     helm install <your installation name> ./qdrant-on-azure/ --create-namespace
     ```
 
+1. Optionally, verify your installation by creating a collection, as shown in the [Qdrant quick start documentation](https://qdrant.tech/documentation/quick_start/#create-collection).
+
+    ```bash
+    curl -X PUT 'http://[YOUR-LOAD-BALANCER-PUBLIC-IP-ADDRESS]:6333/collections/test_collection' \
+    -H 'Content-Type: application/json' \
+    --data-raw '{
+        "vectors": {
+            "size": 4,
+            "distance": "Dot"
+        }
+    }'
+    ```
+
+    Verify the collection was created:
+
+    ```bash
+    curl 'http://[YOUR-LOAD-BALANCER-PUBLIC-IP-ADDRESS]:6333/collections/test_collection'
+    ```
+
 ## Resources to Learn More
 
-- Azure Kubernetes Service: <https://learn.microsoft.com/azure/aks/>
-- Azure Kubernetes Service with Helm: <https://learn.microsoft.com/azure/aks/quickstart-helm>
-- Qdrant Installation with Kubernetes: <https://qdrant.tech/documentation/install/#with-kubernetes>
-- Qdrant integration with OpenAI: <https://qdrant.tech/documentation/integrations/#openai>
+- [Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/)
+- [Azure Kubernetes Service with Helm](https://learn.microsoft.com/azure/aks/quickstart-helm)
+- [Qdrant Installation with Kubernetes](https://qdrant.tech/documentation/install/#with-kubernetes)
+- [Qdrant integration with OpenAI](https://qdrant.tech/documentation/integrations/#openai)
