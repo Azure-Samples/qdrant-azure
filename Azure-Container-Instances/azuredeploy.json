@@ -1,0 +1,505 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.15.31.15270",
+      "templateHash": "12611150875769665479"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus",
+      "metadata": {
+        "description": "Primary location for all resources"
+      },
+      "minLength": 1
+    },
+    "environmentName": {
+      "type": "string",
+      "defaultValue": "qdrantazure",
+      "metadata": {
+        "description": "Name used for resource group and to generate a unique string for deployed resources."
+      }
+    }
+  },
+  "variables": {
+    "$fxv#0": {
+      "analysisServicesServers": "as",
+      "apiManagementService": "apim-",
+      "appConfigurationConfigurationStores": "appcs-",
+      "appManagedEnvironments": "cae-",
+      "appContainerApps": "ca-",
+      "authorizationPolicyDefinitions": "policy-",
+      "automationAutomationAccounts": "aa-",
+      "blueprintBlueprints": "bp-",
+      "blueprintBlueprintsArtifacts": "bpa-",
+      "cacheRedis": "redis-",
+      "cdnProfiles": "cdnp-",
+      "cdnProfilesEndpoints": "cdne-",
+      "cognitiveServicesAccounts": "cog-",
+      "cognitiveServicesFormRecognizer": "cog-fr-",
+      "cognitiveServicesTextAnalytics": "cog-ta-",
+      "computeAvailabilitySets": "avail-",
+      "computeCloudServices": "cld-",
+      "computeDiskEncryptionSets": "des",
+      "computeDisks": "disk",
+      "computeDisksOs": "osdisk",
+      "computeGalleries": "gal",
+      "computeSnapshots": "snap-",
+      "computeVirtualMachines": "vm",
+      "computeVirtualMachineScaleSets": "vmss-",
+      "containerInstanceContainerGroups": "ci",
+      "containerRegistryRegistries": "cr",
+      "containerServiceManagedClusters": "aks-",
+      "databricksWorkspaces": "dbw-",
+      "dataFactoryFactories": "adf-",
+      "dataLakeAnalyticsAccounts": "dla",
+      "dataLakeStoreAccounts": "dls",
+      "dataMigrationServices": "dms-",
+      "dBforMySQLServers": "mysql-",
+      "dBforPostgreSQLServers": "psql-",
+      "devicesIotHubs": "iot-",
+      "devicesProvisioningServices": "provs-",
+      "devicesProvisioningServicesCertificates": "pcert-",
+      "documentDBDatabaseAccounts": "cosmos-",
+      "eventGridDomains": "evgd-",
+      "eventGridDomainsTopics": "evgt-",
+      "eventGridEventSubscriptions": "evgs-",
+      "eventHubNamespaces": "evhns-",
+      "eventHubNamespacesEventHubs": "evh-",
+      "hdInsightClustersHadoop": "hadoop-",
+      "hdInsightClustersHbase": "hbase-",
+      "hdInsightClustersKafka": "kafka-",
+      "hdInsightClustersMl": "mls-",
+      "hdInsightClustersSpark": "spark-",
+      "hdInsightClustersStorm": "storm-",
+      "hybridComputeMachines": "arcs-",
+      "insightsActionGroups": "ag-",
+      "insightsComponents": "appi-",
+      "keyVaultVaults": "kv-",
+      "kubernetesConnectedClusters": "arck",
+      "kustoClusters": "dec",
+      "kustoClustersDatabases": "dedb",
+      "logicIntegrationAccounts": "ia-",
+      "logicWorkflows": "logic-",
+      "machineLearningServicesWorkspaces": "mlw-",
+      "managedIdentityUserAssignedIdentities": "id-",
+      "managementManagementGroups": "mg-",
+      "migrateAssessmentProjects": "migr-",
+      "networkApplicationGateways": "agw-",
+      "networkApplicationSecurityGroups": "asg-",
+      "networkAzureFirewalls": "afw-",
+      "networkBastionHosts": "bas-",
+      "networkConnections": "con-",
+      "networkDnsZones": "dnsz-",
+      "networkExpressRouteCircuits": "erc-",
+      "networkFirewallPolicies": "afwp-",
+      "networkFirewallPoliciesWebApplication": "waf",
+      "networkFirewallPoliciesRuleGroups": "wafrg",
+      "networkFrontDoors": "fd-",
+      "networkFrontdoorWebApplicationFirewallPolicies": "fdfp-",
+      "networkLoadBalancersExternal": "lbe-",
+      "networkLoadBalancersInternal": "lbi-",
+      "networkLoadBalancersInboundNatRules": "rule-",
+      "networkLocalNetworkGateways": "lgw-",
+      "networkNatGateways": "ng-",
+      "networkNetworkInterfaces": "nic-",
+      "networkNetworkSecurityGroups": "nsg-",
+      "networkNetworkSecurityGroupsSecurityRules": "nsgsr-",
+      "networkNetworkWatchers": "nw-",
+      "networkPrivateDnsZones": "pdnsz-",
+      "networkPrivateLinkServices": "pl-",
+      "networkPublicIPAddresses": "pip-",
+      "networkPublicIPPrefixes": "ippre-",
+      "networkRouteFilters": "rf-",
+      "networkRouteTables": "rt-",
+      "networkRouteTablesRoutes": "udr-",
+      "networkTrafficManagerProfiles": "traf-",
+      "networkVirtualNetworkGateways": "vgw-",
+      "networkVirtualNetworks": "vnet-",
+      "networkVirtualNetworksSubnets": "snet-",
+      "networkVirtualNetworksVirtualNetworkPeerings": "peer-",
+      "networkVirtualWans": "vwan-",
+      "networkVpnGateways": "vpng-",
+      "networkVpnGatewaysVpnConnections": "vcn-",
+      "networkVpnGatewaysVpnSites": "vst-",
+      "notificationHubsNamespaces": "ntfns-",
+      "notificationHubsNamespacesNotificationHubs": "ntf-",
+      "operationalInsightsWorkspaces": "log-",
+      "portalDashboards": "dash-",
+      "powerBIDedicatedCapacities": "pbi-",
+      "purviewAccounts": "pview-",
+      "recoveryServicesVaults": "rsv-",
+      "resourcesResourceGroups": "rg-",
+      "searchSearchServices": "srch-",
+      "serviceBusNamespaces": "sb-",
+      "serviceBusNamespacesQueues": "sbq-",
+      "serviceBusNamespacesTopics": "sbt-",
+      "serviceEndPointPolicies": "se-",
+      "serviceFabricClusters": "sf-",
+      "signalRServiceSignalR": "sigr",
+      "sqlManagedInstances": "sqlmi-",
+      "sqlServers": "sql-",
+      "sqlServersDataWarehouse": "sqldw-",
+      "sqlServersDatabases": "sqldb-",
+      "sqlServersDatabasesStretch": "sqlstrdb-",
+      "storageStorageAccounts": "st",
+      "storageStorageAccountsVm": "stvm",
+      "storSimpleManagers": "ssimp",
+      "streamAnalyticsCluster": "asa-",
+      "synapseWorkspaces": "syn",
+      "synapseWorkspacesAnalyticsWorkspaces": "synw",
+      "synapseWorkspacesSqlPoolsDedicated": "syndp",
+      "synapseWorkspacesSqlPoolsSpark": "synsp",
+      "timeSeriesInsightsEnvironments": "tsi-",
+      "webServerFarms": "plan-",
+      "webSitesAppService": "app-",
+      "webSitesAppServiceEnvironment": "ase-",
+      "webSitesFunctions": "func-",
+      "webStaticSites": "stapp-"
+    },
+    "abbrs": "[variables('$fxv#0')]",
+    "resourceToken": "[toLower(uniqueString(subscription().id, parameters('environmentName'), parameters('location')))]"
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2021-04-01",
+      "name": "[format('{0}{1}', variables('abbrs').resourcesResourceGroups, parameters('environmentName'))]",
+      "location": "[parameters('location')]"
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2020-10-01",
+      "name": "qdrant-deploy",
+      "resourceGroup": "[format('{0}{1}', variables('abbrs').resourcesResourceGroups, parameters('environmentName'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "resourceToken": {
+            "value": "[variables('resourceToken')]"
+          },
+          "containerName": {
+            "value": "[parameters('environmentName')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.15.31.15270",
+              "templateHash": "15172312724152037825"
+            }
+          },
+          "parameters": {
+            "location": {
+              "type": "string",
+              "defaultValue": "[resourceGroup().location]",
+              "metadata": {
+                "description": "Azure region for provisioned resources."
+              }
+            },
+            "resourceToken": {
+              "type": "string",
+              "metadata": {
+                "description": "Suffix for provisioned Azure resources."
+              }
+            },
+            "containerVolumeMountName": {
+              "type": "string",
+              "defaultValue": "azqdrantvolume",
+              "metadata": {
+                "description": "Name of the ACI container volumn."
+              }
+            },
+            "storageFileShareName": {
+              "type": "string",
+              "defaultValue": "aciqdrantshare",
+              "metadata": {
+                "description": "Name of the Azure Storage file share to be created."
+              }
+            },
+            "imageName": {
+              "type": "string",
+              "defaultValue": "qdrant/qdrant:latest",
+              "metadata": {
+                "description": "Name of the image to be pulled from Docker Hub."
+              }
+            },
+            "containerMemoryGB": {
+              "type": "int",
+              "defaultValue": 16,
+              "metadata": {
+                "description": "Memory (in GB) of the container."
+              }
+            },
+            "containerCpuCore": {
+              "type": "int",
+              "defaultValue": 4,
+              "metadata": {
+                "description": "CPU cores of the container."
+              }
+            },
+            "containerName": {
+              "type": "string",
+              "metadata": {
+                "description": "Name of the container."
+              }
+            }
+          },
+          "variables": {
+            "$fxv#0": {
+              "analysisServicesServers": "as",
+              "apiManagementService": "apim-",
+              "appConfigurationConfigurationStores": "appcs-",
+              "appManagedEnvironments": "cae-",
+              "appContainerApps": "ca-",
+              "authorizationPolicyDefinitions": "policy-",
+              "automationAutomationAccounts": "aa-",
+              "blueprintBlueprints": "bp-",
+              "blueprintBlueprintsArtifacts": "bpa-",
+              "cacheRedis": "redis-",
+              "cdnProfiles": "cdnp-",
+              "cdnProfilesEndpoints": "cdne-",
+              "cognitiveServicesAccounts": "cog-",
+              "cognitiveServicesFormRecognizer": "cog-fr-",
+              "cognitiveServicesTextAnalytics": "cog-ta-",
+              "computeAvailabilitySets": "avail-",
+              "computeCloudServices": "cld-",
+              "computeDiskEncryptionSets": "des",
+              "computeDisks": "disk",
+              "computeDisksOs": "osdisk",
+              "computeGalleries": "gal",
+              "computeSnapshots": "snap-",
+              "computeVirtualMachines": "vm",
+              "computeVirtualMachineScaleSets": "vmss-",
+              "containerInstanceContainerGroups": "ci",
+              "containerRegistryRegistries": "cr",
+              "containerServiceManagedClusters": "aks-",
+              "databricksWorkspaces": "dbw-",
+              "dataFactoryFactories": "adf-",
+              "dataLakeAnalyticsAccounts": "dla",
+              "dataLakeStoreAccounts": "dls",
+              "dataMigrationServices": "dms-",
+              "dBforMySQLServers": "mysql-",
+              "dBforPostgreSQLServers": "psql-",
+              "devicesIotHubs": "iot-",
+              "devicesProvisioningServices": "provs-",
+              "devicesProvisioningServicesCertificates": "pcert-",
+              "documentDBDatabaseAccounts": "cosmos-",
+              "eventGridDomains": "evgd-",
+              "eventGridDomainsTopics": "evgt-",
+              "eventGridEventSubscriptions": "evgs-",
+              "eventHubNamespaces": "evhns-",
+              "eventHubNamespacesEventHubs": "evh-",
+              "hdInsightClustersHadoop": "hadoop-",
+              "hdInsightClustersHbase": "hbase-",
+              "hdInsightClustersKafka": "kafka-",
+              "hdInsightClustersMl": "mls-",
+              "hdInsightClustersSpark": "spark-",
+              "hdInsightClustersStorm": "storm-",
+              "hybridComputeMachines": "arcs-",
+              "insightsActionGroups": "ag-",
+              "insightsComponents": "appi-",
+              "keyVaultVaults": "kv-",
+              "kubernetesConnectedClusters": "arck",
+              "kustoClusters": "dec",
+              "kustoClustersDatabases": "dedb",
+              "logicIntegrationAccounts": "ia-",
+              "logicWorkflows": "logic-",
+              "machineLearningServicesWorkspaces": "mlw-",
+              "managedIdentityUserAssignedIdentities": "id-",
+              "managementManagementGroups": "mg-",
+              "migrateAssessmentProjects": "migr-",
+              "networkApplicationGateways": "agw-",
+              "networkApplicationSecurityGroups": "asg-",
+              "networkAzureFirewalls": "afw-",
+              "networkBastionHosts": "bas-",
+              "networkConnections": "con-",
+              "networkDnsZones": "dnsz-",
+              "networkExpressRouteCircuits": "erc-",
+              "networkFirewallPolicies": "afwp-",
+              "networkFirewallPoliciesWebApplication": "waf",
+              "networkFirewallPoliciesRuleGroups": "wafrg",
+              "networkFrontDoors": "fd-",
+              "networkFrontdoorWebApplicationFirewallPolicies": "fdfp-",
+              "networkLoadBalancersExternal": "lbe-",
+              "networkLoadBalancersInternal": "lbi-",
+              "networkLoadBalancersInboundNatRules": "rule-",
+              "networkLocalNetworkGateways": "lgw-",
+              "networkNatGateways": "ng-",
+              "networkNetworkInterfaces": "nic-",
+              "networkNetworkSecurityGroups": "nsg-",
+              "networkNetworkSecurityGroupsSecurityRules": "nsgsr-",
+              "networkNetworkWatchers": "nw-",
+              "networkPrivateDnsZones": "pdnsz-",
+              "networkPrivateLinkServices": "pl-",
+              "networkPublicIPAddresses": "pip-",
+              "networkPublicIPPrefixes": "ippre-",
+              "networkRouteFilters": "rf-",
+              "networkRouteTables": "rt-",
+              "networkRouteTablesRoutes": "udr-",
+              "networkTrafficManagerProfiles": "traf-",
+              "networkVirtualNetworkGateways": "vgw-",
+              "networkVirtualNetworks": "vnet-",
+              "networkVirtualNetworksSubnets": "snet-",
+              "networkVirtualNetworksVirtualNetworkPeerings": "peer-",
+              "networkVirtualWans": "vwan-",
+              "networkVpnGateways": "vpng-",
+              "networkVpnGatewaysVpnConnections": "vcn-",
+              "networkVpnGatewaysVpnSites": "vst-",
+              "notificationHubsNamespaces": "ntfns-",
+              "notificationHubsNamespacesNotificationHubs": "ntf-",
+              "operationalInsightsWorkspaces": "log-",
+              "portalDashboards": "dash-",
+              "powerBIDedicatedCapacities": "pbi-",
+              "purviewAccounts": "pview-",
+              "recoveryServicesVaults": "rsv-",
+              "resourcesResourceGroups": "rg-",
+              "searchSearchServices": "srch-",
+              "serviceBusNamespaces": "sb-",
+              "serviceBusNamespacesQueues": "sbq-",
+              "serviceBusNamespacesTopics": "sbt-",
+              "serviceEndPointPolicies": "se-",
+              "serviceFabricClusters": "sf-",
+              "signalRServiceSignalR": "sigr",
+              "sqlManagedInstances": "sqlmi-",
+              "sqlServers": "sql-",
+              "sqlServersDataWarehouse": "sqldw-",
+              "sqlServersDatabases": "sqldb-",
+              "sqlServersDatabasesStretch": "sqlstrdb-",
+              "storageStorageAccounts": "st",
+              "storageStorageAccountsVm": "stvm",
+              "storSimpleManagers": "ssimp",
+              "streamAnalyticsCluster": "asa-",
+              "synapseWorkspaces": "syn",
+              "synapseWorkspacesAnalyticsWorkspaces": "synw",
+              "synapseWorkspacesSqlPoolsDedicated": "syndp",
+              "synapseWorkspacesSqlPoolsSpark": "synsp",
+              "timeSeriesInsightsEnvironments": "tsi-",
+              "webServerFarms": "plan-",
+              "webSitesAppService": "app-",
+              "webSitesAppServiceEnvironment": "ase-",
+              "webSitesFunctions": "func-",
+              "webStaticSites": "stapp-"
+            },
+            "abbrs": "[variables('$fxv#0')]"
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+              "apiVersion": "2022-09-01",
+              "name": "[format('{0}/{1}/{2}', format('{0}{1}', variables('abbrs').storageStorageAccounts, parameters('resourceToken')), 'default', parameters('storageFileShareName'))]",
+              "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts/fileServices', format('{0}{1}', variables('abbrs').storageStorageAccounts, parameters('resourceToken')), 'default')]"
+              ]
+            },
+            {
+              "type": "Microsoft.Storage/storageAccounts/fileServices",
+              "apiVersion": "2022-09-01",
+              "name": "[format('{0}/{1}', format('{0}{1}', variables('abbrs').storageStorageAccounts, parameters('resourceToken')), 'default')]",
+              "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}', variables('abbrs').storageStorageAccounts, parameters('resourceToken')))]"
+              ]
+            },
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2022-09-01",
+              "name": "[format('{0}{1}', variables('abbrs').storageStorageAccounts, parameters('resourceToken'))]",
+              "location": "[parameters('location')]",
+              "kind": "StorageV2",
+              "sku": {
+                "name": "Standard_LRS"
+              },
+              "properties": {
+                "supportsHttpsTrafficOnly": true
+              }
+            },
+            {
+              "type": "Microsoft.ContainerInstance/containerGroups",
+              "apiVersion": "2022-10-01-preview",
+              "name": "[format('{0}{1}', variables('abbrs').containerInstanceContainerGroups, parameters('resourceToken'))]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "sku": "Standard",
+                "containers": [
+                  {
+                    "name": "[parameters('containerName')]",
+                    "properties": {
+                      "image": "[parameters('imageName')]",
+                      "ports": [
+                        {
+                          "port": 80,
+                          "protocol": "TCP"
+                        },
+                        {
+                          "port": 6333,
+                          "protocol": "TCP"
+                        }
+                      ],
+                      "resources": {
+                        "requests": {
+                          "cpu": "[parameters('containerCpuCore')]",
+                          "memoryInGB": "[parameters('containerMemoryGB')]"
+                        }
+                      },
+                      "volumeMounts": [
+                        {
+                          "name": "[parameters('containerVolumeMountName')]",
+                          "mountPath": "/qdrant/storage"
+                        }
+                      ]
+                    }
+                  }
+                ],
+                "osType": "Linux",
+                "restartPolicy": "OnFailure",
+                "ipAddress": {
+                  "ports": [
+                    {
+                      "port": 80,
+                      "protocol": "TCP"
+                    },
+                    {
+                      "port": 6333,
+                      "protocol": "TCP"
+                    }
+                  ],
+                  "type": "Public",
+                  "dnsNameLabel": "qdrant-aci-dns"
+                },
+                "volumes": [
+                  {
+                    "name": "[parameters('containerVolumeMountName')]",
+                    "azureFile": {
+                      "shareName": "[parameters('storageFileShareName')]",
+                      "storageAccountName": "[format('{0}{1}', variables('abbrs').storageStorageAccounts, parameters('resourceToken'))]",
+                      "storageAccountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}', variables('abbrs').storageStorageAccounts, parameters('resourceToken'))), '2022-09-01').keys[0].value]"
+                    }
+                  }
+                ]
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', format('{0}{1}', variables('abbrs').storageStorageAccounts, parameters('resourceToken')))]"
+              ]
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', format('{0}{1}', variables('abbrs').resourcesResourceGroups, parameters('environmentName')))]"
+      ]
+    }
+  ]
+}

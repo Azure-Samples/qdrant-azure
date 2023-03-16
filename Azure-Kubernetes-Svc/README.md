@@ -25,7 +25,7 @@ You can get started by using the **Deploy the Azure** button shown below.
 
 To deploy the Qdrant service on Azure Kubernetes Service with an Azure volume, you must first ensure that the AKS cluster is running. You can create a cluster using the **Deploy to Azure** button below, or manually using the Azure Portal or Azure CLI.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Kubernetes-Svc%2Faks-arm-deploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Kubernetes-Svc%2Fazuredeploy.json)
 
 To create an AKS cluster, you will need to provide an SSH public key.  A key can be generated using the `ssh-keygen` command, as shown in the example below.
 

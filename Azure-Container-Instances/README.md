@@ -18,7 +18,7 @@ To get started, users will need access to an Azure subscription.
 Users will need to have permissions in their Azure subscription for Azure Container
 Instances and Azure Storage.
 
-If using the **Deploy to Azure button**, you will need an Azure Storage account. When you select the Deploy to Azure button, the template will **create** a storage account for you.
+If using the **Deploy to Azure button**, you will need an Azure Storage account. When you select the Deploy to Azure button, the template will create a storage account for you.
 
 ### Getting Started
 
@@ -28,7 +28,7 @@ You can get started by using the **Deploy the Azure** button shown below.
 
 These templates demonstrates a simple way to deploy the Qdrant vector database with a volume for [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/).  Use the **Deploy to Azure** button below to quickly deploy to your subscription with an Azure Container Instance.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-withstorage.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Container-Instances%2FARM-templates%2Fazuredeploy.json)
 
 ##### Alternative deployment techniques
 
