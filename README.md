@@ -19,6 +19,8 @@ To get started, users will need access to an Azure subscription.
 
 To deploy using the Deploy to Azure button which leverages an ARM template, you need write access on the resources you're deploying and access to all operations on the Microsoft.Resources/deployments resource type.
 
+This project contains a dev container configuration which can be used for local development. To learn more about using a dev container, please review [Developing inside a Container](https://code.visualstudio.com/docs/devcontainers/containers).
+
 ## Installation
 
 ### Azure Container Instances
@@ -27,9 +29,9 @@ To deploy Qdrant to an Azure Container Instance with Azure Volume, go to the `Az
 
 Additionally, you can deploy using the **Deploy to Azure button** below.
 
-If using the **Deploy to Azure button**, this setup a storage account in Azure for you. Please ensure you have permissions for Azure Container Services and Azure Storage Accounts.
+If using the **Deploy to Azure button**, this will create an Azure Storage account for you. Please ensure you have permissions for Azure Container Services and Azure Storage Accounts.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-withstorage.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Container-Instances%2Fazuredeploy.json)
 
 ### Azure Kubernetes Service
 
@@ -37,7 +39,7 @@ To deploy Qdrant to a cluster running in Azure Kubernetes Services, go to the `A
 
 You can quickly create an **Azure Kubernetes Service** cluster by clicking the Deploy to Azure button below. After creating your AKS cluster, go to the `Azure-Kubernetes-Svc` folder to deploy **Qdrant** into the AKS cluster using **Helm**.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Kubernetes-Svc%2Faks-arm-deploy.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Kubernetes-Svc%2Fazuredeploy.json)
 
 ### Docker (Local)
 
