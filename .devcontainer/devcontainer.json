@@ -1,13 +1,6 @@
 {
     "name": "qdrant on Azure",
-    "image": " mcr.microsoft.com/vscode/devcontainers/base:0-bullseye",
-    // "build": {
-    //     // "dockerfile": "Dockerfile",
-    //     // "image": " mcr.microsoft.com/vscode/devcontainers/base:0-bullseye",
-    //     // "args": {
-    //     //     "VARIANT": "bullseye"
-    //     // }
-    // },
+    "image": "mcr.microsoft.com/devcontainers/base:0-bullseye",
     "features": {
         "ghcr.io/devcontainers/features/github-cli:1": {},
         "ghcr.io/devcontainers/features/azure-cli:1": {
