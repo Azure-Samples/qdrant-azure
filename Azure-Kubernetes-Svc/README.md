@@ -8,7 +8,14 @@ To get started, users will need access to an Azure subscription.
 Users will also need to have the following installed on their local machine:
 
 - **Helm:**
-  Helm can be installed via package manager or with the Helm script provided in folder `scripts` in this directory.
+  Helm can be installed via package manager or with the Helm script for bash shell provided in folder `scripts` in this directory.
+
+  Alternatively, helm can be installed via various package managers for Windows and/or MacOs by following the instructions note in the [Helm documentation](https://helm.sh/docs/intro/install/).
+
+  ***Documentation Example: Install Helm on Windows with Powershell***
+  ```powershell
+  choco install kubernetes-helm
+  ```
 
 - **Kubectl:**
   Tools for Kubernetes will need to installed. You install kubectl using the Azure CLI by executing the `az aks install-cli` command.  Alternatively, following the instruction in the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/#kubectl) to install kubectl.
@@ -73,13 +80,21 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
     kubectl get nodes
     ```
 
-1. From the Azure-Kubernetes-Svc directory, install Qdrant on Azure Kubernetes Service with Helm by running the following command:
+1. From the current directory (Azure-Kubernetes-Svc/qdrant-on-azure), install Qdrant on Azure Kubernetes Service with Helm by running the following command:
 
     ```bash
-    helm install <your installation name> ./qdrant-on-azure/ --create-namespace
+    helm install <your installation name> ./qdrant-on-azure --create-namespace
+    ```
+    **OR for custom namespace**
+    ```bash
+    helm install <your installation name> ./qdrant-on-azure --namespace <your desired namespace> --create-namespace
     ```
 
-1. Optionally, verify your installation by creating a collection, as shown in the [Qdrant quick start documentation](https://qdrant.tech/documentation/quick_start/#create-collection).
+2. If you wish to verify your installation, Create a collection in Qdrant, as shown in the [Qdrant quick start documentation](https://qdrant.tech/documentation/quick_start/#create-collection).
+
+***Note: Your load balancer public IP address can be found by running the command: ```kubectl get services``` and copying the IP address from the **EXTERNAL-IP** column for **TYPE** LoadBalancer.***
+![Qdrant LB IP Addr](../images/qdrant-lb-ip-addr.png)
+
 
     ```bash
     curl -X PUT 'http://[YOUR-LOAD-BALANCER-PUBLIC-IP-ADDRESS]:6333/collections/test_collection' \
