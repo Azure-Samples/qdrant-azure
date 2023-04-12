@@ -90,9 +90,10 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
     
 
 2. From the current directory (Azure-Kubernetes-Svc/qdrant-on-azure), install Qdrant on Azure Kubernetes Service with Helm by running the following command:
+**NOTE: For more information on Helm, Helm commands and related parameters, see Helm documentation linked below**
 
     ```bash
-    helm install <your installation name> ./qdrant-on-azure --create-namespace
+    helm install <your desired installation name> ./qdrant-on-azure --create-namespace
     ```
     **OR for custom namespace**
     ```bash
@@ -126,5 +127,7 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
 
 - [Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/)
 - [Azure Kubernetes Service with Helm](https://learn.microsoft.com/azure/aks/quickstart-helm)
+- [Helm Documentation](https://helm.sh/docs/)
+
 - [Qdrant Installation with Kubernetes](https://qdrant.tech/documentation/install/#with-kubernetes)
 - [Qdrant integration with OpenAI](https://qdrant.tech/documentation/integrations/#openai)
