@@ -8,7 +8,12 @@ To get started, users will need access to an Azure subscription.
 Users will also need to have the following installed on their local machine:
 
 - **Helm:**
-  Helm can be installed via package manager or with the Helm script for bash shell provided in folder `scripts` in this directory.
+  Helm can be installed via package manager or with the Helm script for bash shell provided in folder `scripts` in this directory. 
+  ***To install Helm using script run the following command:***
+  ```bash
+  chmod 700 get_helm.sh 
+  ./get_helm.sh
+  ```
 
   Alternatively, helm can be installed via various package managers for Windows and/or MacOs by following the instructions note in the [Helm documentation](https://helm.sh/docs/intro/install/).
 
