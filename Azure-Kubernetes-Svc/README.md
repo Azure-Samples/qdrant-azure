@@ -82,10 +82,14 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
 
     ```bash
     az aks get-credentials --resource-group <your-resource-group-name> --name <your-aks-cluster-name>
+    ```
+    Once you have configured kubectl with credential, you can verify the nodes are running successfully by running the following command:
+    ```bash
     kubectl get nodes
     ```
+    
 
-1. From the current directory (Azure-Kubernetes-Svc/qdrant-on-azure), install Qdrant on Azure Kubernetes Service with Helm by running the following command:
+2. From the current directory (Azure-Kubernetes-Svc/qdrant-on-azure), install Qdrant on Azure Kubernetes Service with Helm by running the following command:
 
     ```bash
     helm install <your installation name> ./qdrant-on-azure --create-namespace
@@ -95,10 +99,10 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
     helm install <your installation name> ./qdrant-on-azure --namespace <your desired namespace> --create-namespace
     ```
 
-2. If you wish to verify your installation, Create a collection in Qdrant, as shown in the [Qdrant quick start documentation](https://qdrant.tech/documentation/quick_start/#create-collection).
+3. If you wish to verify your installation, Create a collection in Qdrant, as shown in the [Qdrant quick start documentation](https://qdrant.tech/documentation/quick_start/#create-collection).
 
 ***Note: Your load balancer public IP address can be found by running the command: ```kubectl get services``` and copying the IP address from the **EXTERNAL-IP** column for **TYPE** LoadBalancer.***
-![Qdrant LB IP Addr](../images/qdrant-lb-ip-addr.png)
+![Qdrant LB IP Addr](../img/az-lb-kubectl.png)
 
 
     ```bash
