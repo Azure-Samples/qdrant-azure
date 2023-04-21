@@ -26,7 +26,7 @@
       "dnsPrefix": {
         "type": "string",
         "metadata": {
-          "description": "Optional DNS prefix to use with hosted Kubernetes API server FQDN."
+          "description": "Required DNS prefix to use with hosted Kubernetes API server FQDN."
         }
       },
       "osDiskSizeGB": {

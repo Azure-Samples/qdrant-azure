@@ -8,7 +8,19 @@ To get started, users will need access to an Azure subscription.
 Users will also need to have the following installed on their local machine:
 
 - **Helm:**
-  Helm can be installed via package manager or with the Helm script provided in folder `scripts` in this directory.
+  Helm can be installed via package manager or with the Helm script for bash shell provided in folder `scripts` in this directory. 
+  ***To install Helm using script run the following command:***
+  ```bash
+  chmod 700 get_helm.sh 
+  ./get_helm.sh
+  ```
+
+  Alternatively, helm can be installed via various package managers for Windows and/or MacOs by following the instructions note in the [Helm documentation](https://helm.sh/docs/intro/install/).
+
+  ***Documentation Example: Install Helm on Windows with Powershell***
+  ```powershell
+  choco install kubernetes-helm
+  ```
 
 - **Kubectl:**
   Tools for Kubernetes will need to installed. You install kubectl using the Azure CLI by executing the `az aks install-cli` command.  Alternatively, following the instruction in the [Kubernetes documentation](https://kubernetes.io/docs/tasks/tools/#kubectl) to install kubectl.
@@ -70,16 +82,29 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
 
     ```bash
     az aks get-credentials --resource-group <your-resource-group-name> --name <your-aks-cluster-name>
+    ```
+    Once you have configured kubectl with credential, you can verify the nodes are running successfully by running the following command:
+    ```bash
     kubectl get nodes
     ```
+    
 
-1. From the Azure-Kubernetes-Svc directory, install Qdrant on Azure Kubernetes Service with Helm by running the following command:
+2. From the current directory (Azure-Kubernetes-Svc/qdrant-on-azure), install Qdrant on Azure Kubernetes Service with Helm by running the following command:
+**NOTE: For more information on Helm, Helm commands and related parameters, see Helm documentation linked below**
 
     ```bash
-    helm install <your installation name> ./qdrant-on-azure/ --create-namespace
+    helm install <your desired installation name> ./qdrant-on-azure --create-namespace
+    ```
+    **OR for custom namespace**
+    ```bash
+    helm install <your installation name> ../qdrant-on-azure --namespace <your desired namespace> --create-namespace
     ```
 
-1. Optionally, verify your installation by creating a collection, as shown in the [Qdrant quick start documentation](https://qdrant.tech/documentation/quick_start/#create-collection).
+3. If you wish to verify your installation, Create a collection in Qdrant, as shown in the [Qdrant quick start documentation](https://qdrant.tech/documentation/quick_start/#create-collection).
+
+***Note: Your load balancer public IP address can be found by running the command: ```kubectl get services``` and copying the IP address from the **EXTERNAL-IP** column for **TYPE** LoadBalancer.***
+![Qdrant LB IP Addr](../img/az-lb-kubectl.png)
+
 
     ```bash
     curl -X PUT 'http://[YOUR-LOAD-BALANCER-PUBLIC-IP-ADDRESS]:6333/collections/test_collection' \
@@ -92,7 +117,7 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
     }'
     ```
 
-    Verify the collection was created:
+If you wish to verify the test collection was created, run the following command. 
 
     ```bash
     curl 'http://[YOUR-LOAD-BALANCER-PUBLIC-IP-ADDRESS]:6333/collections/test_collection'
@@ -102,5 +127,7 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
 
 - [Azure Kubernetes Service](https://learn.microsoft.com/azure/aks/)
 - [Azure Kubernetes Service with Helm](https://learn.microsoft.com/azure/aks/quickstart-helm)
+- [Helm Documentation](https://helm.sh/docs/)
+
 - [Qdrant Installation with Kubernetes](https://qdrant.tech/documentation/install/#with-kubernetes)
 - [Qdrant integration with OpenAI](https://qdrant.tech/documentation/integrations/#openai)
