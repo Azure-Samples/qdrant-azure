@@ -9,7 +9,6 @@ allowing you to bring Vector Search and Embeddings storage to your AI products.
 
 You have several options for how to get Qdrant running on Azure:
 
-- [Azure Container Instance](Azure-Container-Instances/README.md)
 - [Azure Kubernetes Service](Azure-Kubernetes-Svc/README.md)
 - [Qdrant Container in Docker](Local-Docker-Deployment/README.md)
 
