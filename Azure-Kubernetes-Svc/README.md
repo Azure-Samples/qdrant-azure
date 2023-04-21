@@ -97,7 +97,7 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
     ```
     **OR for custom namespace**
     ```bash
-    helm install <your installation name> ./qdrant-on-azure --namespace <your desired namespace> --create-namespace
+    helm install <your installation name> ../qdrant-on-azure --namespace <your desired namespace> --create-namespace
     ```
 
 3. If you wish to verify your installation, Create a collection in Qdrant, as shown in the [Qdrant quick start documentation](https://qdrant.tech/documentation/quick_start/#create-collection).
