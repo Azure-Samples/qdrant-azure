@@ -117,7 +117,7 @@ After the AKS cluster has been created, you can deploy Qdrant on Azure Kubernete
     }'
     ```
 
-    Verify the collection was created:
+If you wish to verify the test collection was created, run the following command. 
 
     ```bash
     curl 'http://[YOUR-LOAD-BALANCER-PUBLIC-IP-ADDRESS]:6333/collections/test_collection'
