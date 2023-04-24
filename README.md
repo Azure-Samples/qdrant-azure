@@ -26,6 +26,9 @@ To deploy Qdrant to a cluster running in Azure Kubernetes Services, go to the `A
 
 You can quickly create an **Azure Kubernetes Service** cluster by clicking the Deploy to Azure button below. After creating your AKS cluster, go to the `Azure-Kubernetes-Svc` folder to deploy **Qdrant** into the AKS cluster using **Helm**.
 
+#### AKS Prerequisites 
+**PLEASE NOTE! ensure that you have a resource group and ssh key in that resource created before selecting the Deploy to Azure Button below. More details can be found in README.md in [Azure Kubernetes Service README.md](Azure-Kubernetes-Svc/README.md)**
+
 [![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Kubernetes-Svc%2Faks-arm-deploy.json)
 
 ### Docker (Local)
