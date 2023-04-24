@@ -33,24 +33,41 @@ If using the Visual Studio Code dev container, both Helm and Kubectl are install
 
 You can get started by using the **Deploy the Azure** button shown below.
 
+> This solution contains _both_ an Azure Bicep and an ARM template.  The **Deploy to Azure** button uses the ARM template.  To use the Bicep template, please follow the instructions below for using the Azure CLI or Azure PowerShell.
+
 #### Deployment
 
 To deploy the Qdrant service on Azure Kubernetes Service with an Azure volume, you must first ensure that the AKS cluster is running. You can create a cluster using the **Deploy to Azure** button below, or manually using the Azure Portal or Azure CLI.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Kubernetes-Svc%2Faks-arm-deploy.json)
+#### Prerequisites 
+Before selecting the Deploy to Azure button, please ensure that a resource group and a SSH key for Azure has been created. You can create both by running the commands shown below in the Azure CLI or by using the Azure Portal. 
 
-> This solution contains _both_ an Azure Bicep and an ARM template.  The **Deploy to Azure** button uses the ARM template.  To use the Bicep template, please follow the instructions below for using the Azure CLI or Azure PowerShell.
+```bash
+az group create --name <YOUR_RESOURCE_GROUP_NAME> --location eastus
 
-To create an AKS cluster, you will need to provide an SSH public key.  A key can be generated using the `ssh-keygen` command, as shown in the example below.
+az sshkey create --name "qdrantSSHKey" --resource-group "<YOUR_RESOURCE_GROUP_NAME_CREATED_ABOVE>"
+```
+**OR**
+
+You can also create and upload an SSH key manually by following these steps: 
+A key can be generated using the `ssh-keygen` command, as shown in the example below.
 
 ```bash
 ssh-keygen -t rsa -b 4096
 ```
-
 When prompted, provide the following values:
 
 - **Linux admin username**: Enter a username to connect using SSH, such as _azurek8sadmin_.
 - **SSH RSA public key**: copy and paste the _public_ part of your SSH key pair (by default, the contents of _~/.ssh/id_rsa.pub_).
+
+**PLEASE NOTE:** Upon clicking **Deploy to Azure** button below and loading template, please select 'Use existing SSH key' option and from the dropdown select the SSH key created in Azure created above ***(key name in example above is qdrantSSHKey)*** 
+
+**OR** 
+if you generated a key manually, select option to Provide an SSH Key and paste the key in full into the textbox.
+
+
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Kubernetes-Svc%2Faks-arm-deploy.json)
+
 
 ##### Azure CLI
 
