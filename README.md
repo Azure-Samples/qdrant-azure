@@ -55,6 +55,7 @@ You can overwrite values by creating and adding new records to a file `./config/
 
 ## Resources for Learning More
 
+- [Semantic Kernel Blog: The Power of Persistent Memory with Semantic Kernel and Qdrant Vector Database](https://devblogs.microsoft.com/semantic-kernel/the-power-of-persistent-memory-with-semantic-kernel-and-qdrant-vector-database/)
 - [Qdrant Vector Search [Vector Database]](https://qdrant.tech/)
 - [Qdrant Integration with OpenAI](https://qdrant.tech/documentation/integrations/#openai)
 - [Azure Container Instances (ACI)](https://learn.microsoft.com/azure/container-instances/)
