@@ -49,9 +49,6 @@ resource envVnet 'Microsoft.Network/virtualNetworks@2020-08-01' = {
 resource containerAppsEnvironment 'Microsoft.App/managedEnvironments@2022-11-01-preview' = {
   name: environmentName
   location: location
-  dependsOn: [
-    envVnet
-  ]
   properties: {
     appLogsConfiguration: {
       destination: 'azure-monitor'
@@ -83,7 +80,6 @@ resource qdrantApiContainerApp1 'Microsoft.App/containerApps@2022-11-01-preview'
   location: location
   dependsOn: [
     qdrantstorage
-    containerAppsEnvironment
   ]
   properties: {
     environmentId: containerAppsEnvironment.id
@@ -104,7 +100,7 @@ resource qdrantApiContainerApp1 'Microsoft.App/containerApps@2022-11-01-preview'
           }
           volumeMounts: [
             {
-              volumeName: 'qdrantstoragemount'
+              volumeName: 'qdrantstoragevol'
               mountPath: '/qdrant/storage'
             }
           ]
@@ -116,8 +112,8 @@ resource qdrantApiContainerApp1 'Microsoft.App/containerApps@2022-11-01-preview'
       }
       volumes: [
         {
-          name: 'qdrantstoragemount'
-          storageName: storageName
+          name: 'qdrantstoragevol'
+          storageName: 'qdrantstoragemount'
           storageType: 'AzureFile'
         }
       ]
@@ -130,7 +126,6 @@ resource qdrantDbContainerApp2 'Microsoft.App/containerApps@2022-11-01-preview' 
   location: location
   dependsOn: [
     qdrantstorage
-    containerAppsEnvironment
   ]
   properties: {
     environmentId: containerAppsEnvironment.id
@@ -153,7 +148,7 @@ resource qdrantDbContainerApp2 'Microsoft.App/containerApps@2022-11-01-preview' 
           }
           volumeMounts: [
             {
-              volumeName: 'qdrantstoragemount'
+              volumeName: 'qdrantstoragevol'
               mountPath: '/qdrant/storage'
             }
           ]
@@ -165,8 +160,8 @@ resource qdrantDbContainerApp2 'Microsoft.App/containerApps@2022-11-01-preview' 
       }
       volumes: [
         {
-          name: 'qdrantstoragemount'
-          storageName: storageName
+          name: 'qdrantstoragevol'
+          storageName: 'qdrantstoragemount'
           storageType: 'AzureFile'
         }
       ]

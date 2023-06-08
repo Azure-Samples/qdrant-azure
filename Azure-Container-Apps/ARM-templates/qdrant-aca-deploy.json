@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.17.1.54307",
-      "templateHash": "5870439730240787175"
+      "templateHash": "13336121019239169497"
     }
   },
   "parameters": {
@@ -57,7 +57,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.17.1.54307",
-              "templateHash": "12070990156759493009"
+              "templateHash": "5985304873031619225"
             }
           },
           "parameters": {
@@ -191,7 +191,7 @@
                       },
                       "volumeMounts": [
                         {
-                          "volumeName": "qdrantstoragemount",
+                          "volumeName": "qdrantstoragevol",
                           "mountPath": "/qdrant/storage"
                         }
                       ]
@@ -203,8 +203,8 @@
                   },
                   "volumes": [
                     {
-                      "name": "qdrantstoragemount",
-                      "storageName": "[parameters('storageName')]",
+                      "name": "qdrantstoragevol",
+                      "storageName": "qdrantstoragemount",
                       "storageType": "AzureFile"
                     }
                   ]
@@ -241,7 +241,7 @@
                       },
                       "volumeMounts": [
                         {
-                          "volumeName": "qdrantstoragemount",
+                          "volumeName": "qdrantstoragevol",
                           "mountPath": "/qdrant/storage"
                         }
                       ]
@@ -253,8 +253,8 @@
                   },
                   "volumes": [
                     {
-                      "name": "qdrantstoragemount",
-                      "storageName": "[parameters('storageName')]",
+                      "name": "qdrantstoragevol",
+                      "storageName": "qdrantstoragemount",
                       "storageType": "AzureFile"
                     }
                   ]

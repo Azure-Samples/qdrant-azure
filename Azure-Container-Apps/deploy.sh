@@ -5,8 +5,7 @@ set -o errexit
 set -o nounset
 
 LOCATION=eastus
-#DEPLOYMENT_NAME=acaqdrant$(date +%m%d%H%M%S)
-DEPLOYMENT_NAME=acaqdrant
+DEPLOYMENT_NAME=acaqdrant$(date +%m%d%H%M%S)
 
 az deployment sub create \
     --name $DEPLOYMENT_NAME \
