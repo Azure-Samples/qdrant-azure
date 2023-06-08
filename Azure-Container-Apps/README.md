@@ -2,6 +2,8 @@
 
 This project provides resources to deploy the Qdrant vector database to Azure using Azure Container Apps.
 
+Azure Container Apps is a serverless platform for running containerized applications without managing infrastructure, providing simplified deployment and scalability.
+
 ## Qdrant Vector DB with Volume on Azure
 
 ### Features
@@ -25,9 +27,9 @@ You can get started by using the **Deploy the Azure** button shown below.
 
 #### Deployment
 
-These templates demonstrates a simple way to deploy the Qdrant vector database with a volume for [Azure Container Apps](aka.ms/containerapps).  Use the **Deploy to Azure** button below to quickly deploy to your subscription with an Azure Container Instance.
+These templates demonstrates a simple way to deploy the Qdrant vector database with a volume for [Azure Container Apps](aka.ms/containerapps).  Use the **Deploy to Azure** button below to quickly deploy to your subscription with an Azure Container Apps.
 
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Container-Instances%2FARM-templates%2Fqdrant-deploy-aci-withstorage.json)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure-Samples%2Fqdrant-azure%2Fmain%2FAzure-Container-Apps%2FARM-templates%2Fqdrant-aca-deploy.json)
 
 > This solution contains _both_ an Azure Bicep and an ARM template.  The **Deploy to Azure** button uses the ARM template.  To use the Bicep template, please follow the instructions below for using the Azure CLI or Azure PowerShell.
 
@@ -37,7 +39,7 @@ Alternatively, you can deploy the solution using the either the Azure CLI or Azu
 
 ###### Azure CLI
 
-Deploy the Azure Container Instance with a new storage account volume created using the Bicep template `main.bicep` located this directory directory.
+Deploy the Azure Container Apps with a new storage account volume created using the Bicep template `main.bicep` located this directory directory.
 
 To deploy using the Azure CLI, open the command line and run the following command:
 
@@ -50,7 +52,7 @@ To deploy using the Azure CLI, open the command line and run the following comma
 
 ###### Azure PowerShell
 
-Deploy the Azure Container Instance with a new storage account volume using the Azure Bicep template `main.bicep` located in this directory.
+Deploy the Azure Container Apps with a new storage account volume using the Azure Bicep template `main.bicep` located in this directory.
 
 To deploy using the Azure Powershell, open the Powershell command line and run the following command:
 
