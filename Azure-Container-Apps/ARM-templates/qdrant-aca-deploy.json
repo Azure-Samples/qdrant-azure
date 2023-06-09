@@ -5,7 +5,7 @@
     "_generator": {
       "name": "bicep",
       "version": "0.17.1.54307",
-      "templateHash": "13336121019239169497"
+      "templateHash": "13032850461496112943"
     }
   },
   "parameters": {
@@ -57,7 +57,7 @@
             "_generator": {
               "name": "bicep",
               "version": "0.17.1.54307",
-              "templateHash": "5985304873031619225"
+              "templateHash": "10722978479364748537"
             }
           },
           "parameters": {
@@ -99,7 +99,7 @@
               "sku": {
                 "name": "[parameters('storageSKU')]"
               },
-              "kind": "StorageV2",
+              "kind": "FileStorage",
               "properties": {
                 "supportsHttpsTrafficOnly": true
               }
@@ -170,14 +170,14 @@
             {
               "type": "Microsoft.App/containerApps",
               "apiVersion": "2022-11-01-preview",
-              "name": "[format('{0}api', parameters('environmentName'))]",
+              "name": "[format('{0}http', parameters('environmentName'))]",
               "location": "[parameters('location')]",
               "properties": {
                 "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('environmentName'))]",
                 "configuration": {
                   "ingress": {
                     "external": true,
-                    "targetPort": 80
+                    "targetPort": 6333
                   }
                 },
                 "template": {
@@ -218,7 +218,7 @@
             {
               "type": "Microsoft.App/containerApps",
               "apiVersion": "2022-11-01-preview",
-              "name": "[format('{0}db', parameters('environmentName'))]",
+              "name": "[format('{0}grpc', parameters('environmentName'))]",
               "location": "[parameters('location')]",
               "properties": {
                 "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('environmentName'))]",
@@ -226,8 +226,8 @@
                   "ingress": {
                     "external": true,
                     "transport": "TCP",
-                    "targetPort": 6333,
-                    "exposedPort": 6333
+                    "targetPort": 6334,
+                    "exposedPort": 6334
                   }
                 },
                 "template": {

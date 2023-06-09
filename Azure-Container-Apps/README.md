@@ -63,6 +63,27 @@ To deploy using the Azure Powershell, open the Powershell command line and run t
       -TemplateFile main.bicep
 ```
 
+###### Validate your deployment
+This deployment creates two container apps on a vnet integrated container apps environment.The first application allows users to access the Qdrant APIs via a REST interface, while the second application allows Qdrant access over a gRPC interface. :
+
+1. HTTP Application: To confirm the successful deployment of the HTTP app, execute a Curl command over the root endpoint. This should return the Qdrant version.
+   ```bash
+   > curl https://<htto-app-endpoint>.<env-name>.<region>.azurecontainerapps.io
+   {"title":"qdrant - vector search engine","version":"1.2.2"}
+   ```
+2. gRPC Application: In order to interact with the gRPC app, you need to clone the Qdrant repository first. Then, use [grpcurl](https://github.com/fullstorydev/grpcurl), a command-line utility to make gRPC requests, to invoke the Qdrant health check endpoint.
+   ```bash
+   # For detailed instructions, refer: https://github.com/qdrant/qdrant/blob/master/QUICK_START_GRPC.md
+   > git clone https://github.com/qdrant/qdrant
+   > cd qdrant
+   > grpcurl -plaintext -import-path ./lib/api/src/grpc/proto/ -proto qdrant.proto -d '{}' <grpc-app-endpoint>.<env-name>.<region>.azurecontainerapps.io:6334 qdrant.Qdrant/HealthCheck
+     {
+       "title": "qdrant - vector search engine",
+       "version": "1.2.2"
+     }
+   ``` 
+
+
 ## Resources to learn more
 
 For more information in deploying ARM templates please review:

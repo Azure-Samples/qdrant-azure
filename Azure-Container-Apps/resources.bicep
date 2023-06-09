@@ -13,7 +13,7 @@ resource storage_account 'Microsoft.Storage/storageAccounts@2021-09-01' = {
   sku: {
     name: storageSKU
   }
-  kind: 'StorageV2'
+  kind: 'FileStorage'
   properties: {
     supportsHttpsTrafficOnly: true
   }
@@ -76,7 +76,7 @@ resource qdrantstorage 'Microsoft.App/managedEnvironments/storages@2022-11-01-pr
 }
 
 resource qdrantApiContainerApp1 'Microsoft.App/containerApps@2022-11-01-preview' = {
-  name: '${environmentName}api'
+  name: '${environmentName}http'
   location: location
   dependsOn: [
     qdrantstorage
@@ -86,7 +86,7 @@ resource qdrantApiContainerApp1 'Microsoft.App/containerApps@2022-11-01-preview'
     configuration: {
         ingress: {
           external: true
-          targetPort: 80
+          targetPort: 6333
         }
     }
     template: {
@@ -122,7 +122,7 @@ resource qdrantApiContainerApp1 'Microsoft.App/containerApps@2022-11-01-preview'
 }
 
 resource qdrantDbContainerApp2 'Microsoft.App/containerApps@2022-11-01-preview' = {
-  name: '${environmentName}db'
+  name: '${environmentName}grpc'
   location: location
   dependsOn: [
     qdrantstorage
@@ -133,8 +133,8 @@ resource qdrantDbContainerApp2 'Microsoft.App/containerApps@2022-11-01-preview' 
       ingress:{
         external: true
         transport: 'TCP'
-        targetPort: 6333
-        exposedPort: 6333     
+        targetPort: 6334
+        exposedPort: 6334    
       }
     }
     template: {
