@@ -1,0 +1,276 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "metadata": {
+    "_generator": {
+      "name": "bicep",
+      "version": "0.17.1.54307",
+      "templateHash": "13032850461496112943"
+    }
+  },
+  "parameters": {
+    "location": {
+      "type": "string",
+      "defaultValue": "eastus",
+      "metadata": {
+        "description": "Primary location for all resources"
+      },
+      "minLength": 1
+    },
+    "environmentName": {
+      "type": "string",
+      "defaultValue": "",
+      "metadata": {
+        "description": "Name used for resource group and to generate a unique string for deployed resources."
+      }
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Resources/resourceGroups",
+      "apiVersion": "2021-04-01",
+      "name": "[format('{0}-rg', parameters('environmentName'))]",
+      "location": "[parameters('location')]"
+    },
+    {
+      "type": "Microsoft.Resources/deployments",
+      "apiVersion": "2022-09-01",
+      "name": "qdrant-deploy",
+      "resourceGroup": "[format('{0}-rg', parameters('environmentName'))]",
+      "properties": {
+        "expressionEvaluationOptions": {
+          "scope": "inner"
+        },
+        "mode": "Incremental",
+        "parameters": {
+          "location": {
+            "value": "[parameters('location')]"
+          },
+          "environmentName": {
+            "value": "[parameters('environmentName')]"
+          }
+        },
+        "template": {
+          "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+          "contentVersion": "1.0.0.0",
+          "metadata": {
+            "_generator": {
+              "name": "bicep",
+              "version": "0.17.1.54307",
+              "templateHash": "10722978479364748537"
+            }
+          },
+          "parameters": {
+            "environmentName": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "storageSKU": {
+              "type": "string",
+              "defaultValue": "Premium_LRS"
+            },
+            "storageName": {
+              "type": "string",
+              "defaultValue": "[format('{0}', parameters('environmentName'))]"
+            },
+            "shareName": {
+              "type": "string",
+              "defaultValue": "[format('{0}qdrantazfiles', parameters('environmentName'))]"
+            },
+            "location": {
+              "type": "string",
+              "defaultValue": ""
+            },
+            "addressPrefix": {
+              "type": "string",
+              "defaultValue": "10.0.0.0/16"
+            },
+            "subnetPrefix": {
+              "type": "string",
+              "defaultValue": "10.0.0.0/23"
+            }
+          },
+          "resources": [
+            {
+              "type": "Microsoft.Storage/storageAccounts",
+              "apiVersion": "2021-09-01",
+              "name": "[parameters('storageName')]",
+              "location": "[parameters('location')]",
+              "sku": {
+                "name": "[parameters('storageSKU')]"
+              },
+              "kind": "FileStorage",
+              "properties": {
+                "supportsHttpsTrafficOnly": true
+              }
+            },
+            {
+              "type": "Microsoft.Storage/storageAccounts/fileServices/shares",
+              "apiVersion": "2021-09-01",
+              "name": "[format('{0}/default/{1}', parameters('storageName'), parameters('shareName'))]",
+              "dependsOn": [
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.Network/virtualNetworks",
+              "apiVersion": "2020-08-01",
+              "name": "[format('{0}-infra-vnet', parameters('environmentName'))]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "addressSpace": {
+                  "addressPrefixes": [
+                    "[parameters('addressPrefix')]"
+                  ]
+                },
+                "subnets": [
+                  {
+                    "name": "infrasubnet",
+                    "properties": {
+                      "addressPrefix": "[parameters('subnetPrefix')]"
+                    }
+                  }
+                ]
+              }
+            },
+            {
+              "type": "Microsoft.App/managedEnvironments",
+              "apiVersion": "2022-11-01-preview",
+              "name": "[parameters('environmentName')]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "appLogsConfiguration": {
+                  "destination": "azure-monitor"
+                },
+                "vnetConfiguration": {
+                  "infrastructureSubnetId": "[reference(resourceId('Microsoft.Network/virtualNetworks', format('{0}-infra-vnet', parameters('environmentName'))), '2020-08-01').subnets[0].id]"
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.Network/virtualNetworks', format('{0}-infra-vnet', parameters('environmentName')))]"
+              ]
+            },
+            {
+              "type": "Microsoft.App/managedEnvironments/storages",
+              "apiVersion": "2022-11-01-preview",
+              "name": "[format('{0}/qdrantstoragemount', parameters('environmentName'))]",
+              "properties": {
+                "azureFile": {
+                  "accountName": "[parameters('storageName')]",
+                  "shareName": "[parameters('shareName')]",
+                  "accountKey": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('storageName')), '2021-09-01').keys[0].value]",
+                  "accessMode": "ReadWrite"
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.App/managedEnvironments', parameters('environmentName'))]",
+                "[resourceId('Microsoft.Storage/storageAccounts', parameters('storageName'))]"
+              ]
+            },
+            {
+              "type": "Microsoft.App/containerApps",
+              "apiVersion": "2022-11-01-preview",
+              "name": "[format('{0}http', parameters('environmentName'))]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('environmentName'))]",
+                "configuration": {
+                  "ingress": {
+                    "external": true,
+                    "targetPort": 6333
+                  }
+                },
+                "template": {
+                  "containers": [
+                    {
+                      "name": "qdrantapicontainerapp",
+                      "image": "qdrant/qdrant",
+                      "resources": {
+                        "cpu": 1,
+                        "memory": "2Gi"
+                      },
+                      "volumeMounts": [
+                        {
+                          "volumeName": "qdrantstoragevol",
+                          "mountPath": "/qdrant/storage"
+                        }
+                      ]
+                    }
+                  ],
+                  "scale": {
+                    "minReplicas": 1,
+                    "maxReplicas": 1
+                  },
+                  "volumes": [
+                    {
+                      "name": "qdrantstoragevol",
+                      "storageName": "qdrantstoragemount",
+                      "storageType": "AzureFile"
+                    }
+                  ]
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.App/managedEnvironments', parameters('environmentName'))]",
+                "[resourceId('Microsoft.App/managedEnvironments/storages', split(format('{0}/qdrantstoragemount', parameters('environmentName')), '/')[0], split(format('{0}/qdrantstoragemount', parameters('environmentName')), '/')[1])]"
+              ]
+            },
+            {
+              "type": "Microsoft.App/containerApps",
+              "apiVersion": "2022-11-01-preview",
+              "name": "[format('{0}grpc', parameters('environmentName'))]",
+              "location": "[parameters('location')]",
+              "properties": {
+                "environmentId": "[resourceId('Microsoft.App/managedEnvironments', parameters('environmentName'))]",
+                "configuration": {
+                  "ingress": {
+                    "external": true,
+                    "transport": "TCP",
+                    "targetPort": 6334,
+                    "exposedPort": 6334
+                  }
+                },
+                "template": {
+                  "containers": [
+                    {
+                      "name": "qdrantdbcontainerapp",
+                      "image": "qdrant/qdrant",
+                      "resources": {
+                        "cpu": 2,
+                        "memory": "4Gi"
+                      },
+                      "volumeMounts": [
+                        {
+                          "volumeName": "qdrantstoragevol",
+                          "mountPath": "/qdrant/storage"
+                        }
+                      ]
+                    }
+                  ],
+                  "scale": {
+                    "minReplicas": 1,
+                    "maxReplicas": 1
+                  },
+                  "volumes": [
+                    {
+                      "name": "qdrantstoragevol",
+                      "storageName": "qdrantstoragemount",
+                      "storageType": "AzureFile"
+                    }
+                  ]
+                }
+              },
+              "dependsOn": [
+                "[resourceId('Microsoft.App/managedEnvironments', parameters('environmentName'))]",
+                "[resourceId('Microsoft.App/managedEnvironments/storages', split(format('{0}/qdrantstoragemount', parameters('environmentName')), '/')[0], split(format('{0}/qdrantstoragemount', parameters('environmentName')), '/')[1])]"
+              ]
+            }
+          ]
+        }
+      },
+      "dependsOn": [
+        "[subscriptionResourceId('Microsoft.Resources/resourceGroups', format('{0}-rg', parameters('environmentName')))]"
+      ]
+    }
+  ]
+}
