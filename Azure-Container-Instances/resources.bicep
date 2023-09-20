@@ -4,7 +4,7 @@ param location string = resourceGroup().location
 @description('Suffix for provisioned Azure resources.')
 param resourceToken string
 
-@description('Name of the ACI container volumn.')
+@description('Name of the ACI container volume.')
 param containerVolumeMountName string = 'azqdrantvolume'
 
 @description('Name of the Azure Storage file share to be created.')
@@ -93,7 +93,7 @@ resource aci 'Microsoft.ContainerInstance/containerGroups@2022-10-01-preview' = 
         }
       ]
       type: 'Public'
-      dnsNameLabel: 'qdrant-aci-dns'
+      dnsNameLabel: 'qdrant-${resourceToken}'
     }
     volumes: [
       {
